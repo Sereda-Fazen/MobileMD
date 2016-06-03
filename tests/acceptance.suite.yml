@@ -38,69 +38,66 @@ modules:
 
 
 env:
-
-  DEV_8:
-
-  DEV_PROD:
+  iPad2:
     modules:
       config:
-        WebDriver:
-          url: 'https://www.denimio.com'
-
-  DEV_2:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://staging:prospect@dev2.denimio.com'
-
-  DEV_3:
-    modules:
-      config:
-        WebDriver:
-          url: 'https://staging:prospect@dev3.denimio.com'
-
-  DEV_4:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://staging:prospect@dev4.denimio.com'
-
-  DEV_5:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://staging:prospect@dev5.denimio.com'
-
-  DEV_6:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://staging:prospect@dev6.denimio.com'
-
-  DEV_7:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://staging:prospect@dev7.denimio.com'
-
-  DEV_9:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://staging:prospect@dev9.denimio.com'
-
-  DEV_PROW:
-    modules:
-      config:
-        WebDriver:
-          url: 'http://149.202.195.201:8150/'
-
-
-
-
-
-  BROWSER:
-      modules:
-        config:
           WebDriver:
-            url: 'http://browserstack.com/automate'
+            url: 'http://www.mowdirect.co.uk'
+            restart: false
+            browser: chrome
+            window_size: 768x1024
+            clear_cookies: false
+
+
+# --run in browserstack--
+
+          #host: 'hub.browserstack.com'
+          #port: 80
+          #browser: 'iPad'
+          #browsername: 'iPad'
+          #restart: false
+          #os: ios
+
+
+# -- login in browserstack
+
+            capabilities:
+             browserstack.user: 'cadencewatch1'
+             browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+
+
+             browserstack.debug: 'true'
+             unexpectedAlertBehaviour: 'accept'
+             pageLoadStrategy: 'eager'
+env:
+  iPhone5:
+    modules:
+      config:
+          WebDriver:
+            url: 'http://www.mowdirect.co.uk'
+            restart: false
+            browser: chrome
+            window_size: 320x568
+            clear_cookies: false
+
+
+# --run in browserstack--
+
+            #host: 'hub.browserstack.com'
+            #port: 80
+            #browser: 'iPhone'
+            #browsername: 'iPhone'
+            #restart: false
+            #os: ios
+
+
+# -- login in browserstack
+
+            capabilities:
+             browserstack.user: 'cadencewatch1'
+             browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+
+
+             browserstack.debug: 'true'
+             unexpectedAlertBehaviour: 'accept'
+             pageLoadStrategy: 'eager'

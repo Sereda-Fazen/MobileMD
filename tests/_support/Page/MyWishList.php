@@ -1,8 +1,6 @@
 <?php
 namespace Page;
-
-use \Codeception\Util\Locator;
-
+use Codeception\Util\Locator;
 class MyWishList
 {
 
@@ -16,7 +14,7 @@ class MyWishList
 
     // add item
 
-    public static $ourTops = '//div[@class="best-container"]//div//p';
+    public static $ourTops = '//div[@class="best-container"]/a/div';
     public static $catProd = '//div[@class="category-products"]';
     public static $clickProd = '//ol[@class="products-list"]//img';
 
@@ -33,7 +31,11 @@ class MyWishList
     // add to basket
 
     public static $addBasket = '//div[@class="buttons-set buttons-set2"]/button[2]';
-    public static $removeFromCart = '//div[@id="cart_mobile"]//tbody/tr/td[2]/a';
+    public static $removeFromCartMobile = '//div[@id="cart_mobile"]//table/tbody/tr/td[2]/a';
+    public static $removeFromCartTablet = '//td[@class="a-center product-cart-remove last"]/a';
+
+    public static $cart = '//*[@class="skip-links"]/div/a';
+    public static $removeItem = '//*[@id="cart-sidebar"]/li/div/a';
 
     //remove
 
@@ -155,14 +157,19 @@ class MyWishList
         $I->click(self::$addBasket);
         $I->waitForElement(self::$successMsg);
         $I->see('2 product(s) have been added to shopping basket:',self::$successMsg);
-
-        $I->waitForElement(self::$removeFromCart);
-        $I->click(self::$removeFromCart);
-        $I->waitForElement(self::$removeFromCart);
-        $I->click(self::$removeFromCart);
-
-        $I->waitForText('Your Basket is empty...');
-
+        /*
+        $I->click(Locator::combine(self::$removeFromCartMobile,self::$removeFromCartTablet));
+        $I->click(Locator::combine(self::$removeFromCartTablet,self::$removeFromCartMobile));
+        */
+        $I->click(self::$cart);
+        $I->waitForElement(self::$removeItem);
+        $I->click(self::$removeItem);
+        $I->acceptPopup();
+        $I->waitForText('Item was removed successfully.');
+        $I->click(self::$removeItem);
+        $I->acceptPopup();
+        $I->waitForText('Item was removed successfully.');
+        
 
         
     }

@@ -7,7 +7,7 @@ use Exception;
 class Checkout
 {
 
-    
+   
     public static $processCheckout = '//div[@id="cart_mobile"]//button';
     public static $continue = '//div[@id="billing-buttons-container"]//button';
     public static $formList = '//ul[@class="form-list"]';
@@ -53,6 +53,7 @@ class Checkout
     public function __construct(\AcceptanceTester $I)
     {
         $this->tester = $I;
+        
     }
 
     /**
