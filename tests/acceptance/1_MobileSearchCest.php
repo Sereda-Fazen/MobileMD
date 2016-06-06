@@ -9,15 +9,15 @@ class SearchCest
 
     function checkSearchInvalid(Page\Search $search, \AcceptanceTester $I) {
         $search->search();
-        $search->searchInvalid('invalid');
+        $search->searchWrong('invalid');
         $I->see('No Results', '//div[@class="gs-snippet"]');
     }
-
+/*
     function checkSearchWrong(Page\Search $search, \AcceptanceTester $I) {
         $search->searchInvalid('инвалид');
         $I->see('No Results', '//div[@class="gs-snippet"]');
     }
-
+*/
     function checkSearchNumber(Page\Search $search, \AcceptanceTester $I) {
         $search->searchInvalid('Lawn7Garden');
         $I->see('Showing results for Lawn 7 Garden', '//div[@class="gsc-webResult gsc-result"]');

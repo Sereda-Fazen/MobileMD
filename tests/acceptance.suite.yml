@@ -35,8 +35,6 @@ modules:
 
 
 
-
-
 env:
   iPad2:
     modules:
@@ -47,6 +45,7 @@ env:
             browser: chrome
             window_size: 768x1024
             clear_cookies: false
+            
 
 
 # --run in browserstack--
@@ -69,35 +68,7 @@ env:
              browserstack.debug: 'true'
              unexpectedAlertBehaviour: 'accept'
              pageLoadStrategy: 'eager'
-env:
-  iPhone5:
-    modules:
-      config:
-          WebDriver:
-            url: 'http://www.mowdirect.co.uk'
-            restart: false
-            browser: chrome
-            window_size: 320x568
-            clear_cookies: false
 
 
-# --run in browserstack--
-
-            #host: 'hub.browserstack.com'
-            #port: 80
-            #browser: 'iPhone'
-            #browsername: 'iPhone'
-            #restart: false
-            #os: ios
 
 
-# -- login in browserstack
-
-            capabilities:
-             browserstack.user: 'cadencewatch1'
-             browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
-
-
-             browserstack.debug: 'true'
-             unexpectedAlertBehaviour: 'accept'
-             pageLoadStrategy: 'eager'

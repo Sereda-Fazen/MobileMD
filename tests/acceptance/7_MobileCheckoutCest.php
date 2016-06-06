@@ -94,6 +94,24 @@ class MobileCheckoutCest
     {
         $checkoutPage->checkOrder();
     }
+
+
+    /**
+     * @param Acceptance\LoginSteps $I
+     * @param \Page\Search $search
+     * T921_Purchase Tractor with custom option
+     */
+
+
+    function purchaseTractorOptional(Step\Acceptance\LoginSteps $I, \Page\Search $search) {
+        $search->search();
+        $search->searchWrong('Lawnflite accessories optional');
+        $search->purchaseTractorOptional();
+    }
+    function checkOrderTractorOptional(\Page\Checkout $checkoutPage)
+    {
+        $checkoutPage->checkOrder();
+    }
     
 
     

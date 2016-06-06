@@ -7,14 +7,15 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function loginSuccess(Step\Acceptance\LoginSteps $I) {
-        $I->loginSuccess('mowdirect@gmail.com','123456');
+
+
+    function purchaseTractorOptional(Step\Acceptance\ProductsSteps $I, \Page\Search $search) {
+        $I->productsLayout();
     }
 
-  
-    function addItemsInWishlist(Page\MyWishList $myWishList) {
-        $myWishList->addItemsInWishlist();
-    }
+   
+
+
 
 
 }

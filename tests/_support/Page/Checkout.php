@@ -2,6 +2,7 @@
 namespace Page;
 
 
+
 use Exception;
 
 class Checkout
@@ -62,8 +63,11 @@ class Checkout
     public function checkOrder()
     {
         $I = $this->tester;
-        $I->waitForElement(self::$processCheckout);
-        $I->click(self::$processCheckout);
+        try { $I->waitForElement('//div[@id="cart_mobile"]//button');
+            $I->click('//div[@id="cart_mobile"]//button');}
+         catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
+            $I->click('//ul[@class="checkout-types top"]//button');}
+        
         $I->waitForText('Checkout');
         $I->getVisibleText('Billing Information');
         $I->seeElement(self::$formList);
