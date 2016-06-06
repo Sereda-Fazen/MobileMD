@@ -30,10 +30,7 @@ class ProductsSteps extends \AcceptanceTester
         $I->waitForElement('//*[@id="customer-reviews"]');
 
         $I->scrollUp(300);
-        $I->waitForElement('//*[@class="add-to-cart-buttons"]/button');
-        $I->click('//*[@class="add-to-cart-buttons"]/button');
-        $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
-
+       
     }
     
     
