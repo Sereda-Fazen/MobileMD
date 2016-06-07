@@ -1,13 +1,13 @@
 <?php
+
 use \Step\Acceptance;
 
+
 /**
- * @group test
+ * @group mobileCategoryNavigation
  */
-class TestCest
+class MobileCategoryNavigationCest
 {
-
-
 
     function mobileCategoryNavigation(Page\CategoryNavigation $category, \Step\Acceptance\ProductsSteps $I) {
         $category->home();
@@ -15,10 +15,15 @@ class TestCest
         $I->amountTopCategories();
     }
 
-   
+
+
+    
+    
+    
 
 
 
+    
 
 }
 

@@ -32,6 +32,18 @@ class ProductsSteps extends \AcceptanceTester
         $I->scrollUp(300);
        
     }
+
+    /**
+     * Category Navigation
+     */
+
+    public function amountTopCategories()
+    {
+        $I = $this;
+        for ($a = 1; $a <= 10; $a++) {
+            $I->waitForElement('//*[@class="products-list"]/li[' . $a . ']');
+        }
+    }
     
     
     
