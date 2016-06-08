@@ -9,10 +9,9 @@ class TestCest
 
 
 
-    function mobileLayoutBannerAdvert(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
-        $search->search();
-        $search->searchWrong('Exclusive rear-roller');
-        $I->mobileLayoutBannerAdvert();
+    function mobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
+        $I->mobileSellTractor();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
    

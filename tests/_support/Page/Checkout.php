@@ -67,6 +67,7 @@ class Checkout
         $I->waitForElement(self::$loginForm);
         $I->fillField(self::$email, $name);
         $I->fillField(self::$pass, $password);
+        $I->scrollDown(200);
         $I->click(self::$submit);
 
         return $this;
@@ -94,6 +95,7 @@ class Checkout
         $I->seeElement(self::$formList);
         $I->seeElement(self::$deliver);
         $I->seeElement(self::$differentAddress);
+        $I->scrollDown(200);
         $I->waitForElement(self::$continue);
         $I->click(self::$continue);
         $I->waitForElementNotVisible('//*[@id="billing-please-wait"]');
@@ -101,20 +103,25 @@ class Checkout
         $I->waitForElement(self::$showDelivery);
         $I->waitForText('Delivery Information');
         $I->waitForElement(self::$useAddress);
+        $I->scrollDown(200);
         try { $I->waitForElement(self::$continue2);
         $I->click(self::$continue2);
         } catch (Exception $e) {}
 
         $I->waitForElement(self::$showMethod);
         $I->waitForText('Delivery Method');
-        $I->waitForElementVisible(self::$continue3);
+        $I->waitForElement(self::$continue3);
         $I->click(self::$continue3);
 
         $I->waitForElement(self::$showPayment);
         $I->waitForText('Payment Information');
+
         $I->waitForElementVisible(self::$continue4);
+
         $I->click(self::$continue4);
-        $I->acceptPopup();
+        try {
+            $I->acceptPopup();
+        } catch (Exception $e) {}
         $I->click(self::$bankTransfer);
         $I->click(self::$continue4);
 
@@ -132,15 +139,16 @@ class Checkout
         $I->waitForElement(self::$agree);
         $I->wait(2);
         $I->click(self::$agree);
+        $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
-        /*
+
         $I->click(self::$continue5);
         $I->waitForText('Your order has been received.');
         $I->see('Your order has been received.',self::$seeOrder);
         $I->getVisibleText('Thank you for your purchase!');
         $I->click(self::$keepContinue);
         $I->waitForElement(self::$mainPage);
-*/
+
         
     }
     

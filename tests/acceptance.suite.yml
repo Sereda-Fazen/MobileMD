@@ -11,7 +11,6 @@ modules:
             restart: false
             browser: chrome
             window_size: 320x568
-            clear_cookies: false
 
 
 # --run in browserstack--
@@ -40,7 +39,7 @@ env:
     modules:
       config:
           WebDriver:
-            url: 'http://www.mowdirect.co.uk'
+            url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
             restart: false
             browser: chrome
             window_size: 768x1024

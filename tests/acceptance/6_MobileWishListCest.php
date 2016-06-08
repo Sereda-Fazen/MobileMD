@@ -7,12 +7,9 @@ use \Step\Acceptance;
 class MobileWishListCest
 {
 
-    function mobileAddItemsFromWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList) {
-        $I->loginSuccess('mowdirect@gmail.com','123456');
-        $myWishList->addItemsInWishlist();
-    }
     function mobileWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList)
     {
+        $I->loginSuccess('mowdirect@gmail.com', '123456');
         $myWishList->wishList();
         $myWishList->checkItems();
         $myWishList->removeItemFromWishList();
@@ -20,6 +17,11 @@ class MobileWishListCest
         $myWishList->addShare();
         $myWishList->removeItem();
     }
+    function mobileAddItemsFromWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList) {
+        $I->loginSuccess('mowdirect@gmail.com', '123456');
+        $myWishList->addItemsInWishlist();
+    }
+
 
 
 
