@@ -9,10 +9,10 @@ class TestCest
 
 
 
-    function mobileCategoryNavigation(Page\CategoryNavigation $category, \Step\Acceptance\ProductsSteps $I) {
-        $category->home();
-        $category->checkTop10();
-        $I->amountTopCategories();
+    function mobileLayoutBannerAdvert(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
+        $search->search();
+        $search->searchWrong('Exclusive rear-roller');
+        $I->mobileLayoutBannerAdvert();
     }
 
    
