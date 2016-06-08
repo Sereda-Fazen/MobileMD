@@ -7,7 +7,7 @@ modules:
 
     config:
         WebDriver:
-            url: 'http://www.mowdirect.co.uk'
+            url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
             restart: false
             browser: chrome
             window_size: 320x568

@@ -2,7 +2,7 @@
 use \Step\Acceptance;
 
 /**
- * @group search
+ * @group mobileSearch
  */
 class SearchCest
 {
@@ -19,7 +19,8 @@ class SearchCest
     }
 */
     function checkSearchNumber(Page\Search $search, \AcceptanceTester $I) {
-        $search->searchInvalid('Lawn7Garden');
+        $search->search();
+        $search->searchWrong('Lawn7Garden');
         $I->see('Showing results for Lawn 7 Garden', '//div[@class="gsc-webResult gsc-result"]');
         $I->see('Search instead for Lawn7Garden', '//div[@class="gsc-webResult gsc-result"]');
     }

@@ -10,107 +10,82 @@ class MobileCheckoutCest
 {
 
     /**
-     * @param Acceptance\LoginSteps $I
+     * @param Acceptance\CheckoutSteps|Acceptance\LoginSteps $I
      * T918_Tractor Sale
+     * @param \Page\Checkout $checkoutPage
      */
 
-    function loginSuccess(Step\Acceptance\LoginSteps $I) {
-        $I->loginSuccess('mowdirect@gmail.com','123456');
-    }
-
-    function mobileSellTractor(\Step\Acceptance\CheckoutSteps $I){
+    function mobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
         $I->mobileSellTractor();
-    }
-
-    function checkOrderTractor(\Page\Checkout $checkoutPage){
-        $checkoutPage->checkOrder();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
     /**
      * @param Acceptance\CheckoutSteps $I
      * T919_Mower Sale
+     * @param \Page\Checkout $checkoutPage
      */
 
-    function mobileSellMower(\Step\Acceptance\CheckoutSteps $I){
+    function mobileSellMower(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSellMower();
-    }
-
-    function checkOrderMower(\Page\Checkout $checkoutPage){
-        $checkoutPage->checkOrder();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
     /**
      * @param Acceptance\CheckoutSteps $I
      * T920_Purchase Tractor with other product
+     * @param \Page\Checkout $checkoutPage
      */
 
 
-    function addToBasketTractorForOther(\Step\Acceptance\CheckoutSteps $I){
+    function mobilePurchaseTractorWithOtherProduct(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSellTractor();
-    }
-    function mobileSellTractorWithOtherItems(\Step\Acceptance\CheckoutSteps $I){
-        $I->mobileSellTractor();
-    }
-
-    function mobilePurchaseOtherItem(\Step\Acceptance\CheckoutSteps $I){
         $I->mobilePurchaseOtherItem();
-    }
-
-    function checkOrderTractorOther(\Page\Checkout $checkoutPage){
-        $checkoutPage->checkOrder();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
     /**
      * @param Acceptance\CheckoutSteps $I
      * T922_Purchase Multiple Different Products Same supplie
+     * @param \Page\Checkout $checkoutPage
      */
 
 
-    function mobileSelectBrandFlymo(\Step\Acceptance\CheckoutSteps $I){
+    function mobilePurchaseMultipleDifferentProductsSameSupplie(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSelectBrand('Flymo grass trimmer','Flymo Vacs & Blowers','2');
-    }
-
-    function checkOrderMultipleTractor(\Page\Checkout $checkoutPage)
-    {
-        $checkoutPage->checkOrder();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
     /**
      * @param Acceptance\CheckoutSteps $I
      * T923_Purchase Multiple Number of Products
+     * @param \Page\Checkout $checkoutPage
      */
 
 
 
-
-    function mobileSelectBrands(\Step\Acceptance\CheckoutSteps $I){
+    function mobilePurchaseMultipleNumberProducts(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSelectBrands();
-    }
-
-    function checkOrderMultipleProducts(\Page\Checkout $checkoutPage)
-    {
-        $checkoutPage->checkOrder();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
     /**
-     * @param Acceptance\LoginSteps $I
      * @param \Page\Search $search
      * T921_Purchase Tractor with custom option
+     * @param \Page\Checkout $checkoutPage
+     * @internal param Acceptance\LoginSteps $I
      */
 
 
-    function purchaseTractorOptional(Step\Acceptance\LoginSteps $I, \Page\Search $search) {
+    function purchaseTractorOptional(\Page\Search $search, \Page\Checkout $checkoutPage) {
         $search->search();
         $search->searchWrong('Lawnflite accessories optional');
         $search->purchaseTractorOptional();
-    }
-    function checkOrderTractorOptional(\Page\Checkout $checkoutPage)
-    {
-        $checkoutPage->checkOrder();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
     
 

@@ -7,35 +7,22 @@ use \Step\Acceptance;
 class MobileWishListCest
 {
 
-    function loginSuccess(Step\Acceptance\LoginSteps $I) {
+    function mobileAddItemsFromWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList) {
         $I->loginSuccess('mowdirect@gmail.com','123456');
+        $myWishList->addItemsInWishlist();
     }
-
-    function mobileCheckEmptyWishList(Page\MyWishList $myWishList) {
+    function mobileWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList)
+    {
         $myWishList->wishList();
-    }
-
-    function checkAnyItems(Page\MyWishList $myWishList) {
         $myWishList->checkItems();
-    }
-
-    function removeItemFromWishList(Page\MyWishList $myWishList) {
         $myWishList->removeItemFromWishList();
-    }
-    function addComment(Page\MyWishList $myWishList) {
         $myWishList->addComment();
-    }
-    function addShare(Page\MyWishList $myWishList) {
         $myWishList->addShare();
-    }
-
-    function returnWishListRemoveItem(Page\MyWishList $myWishList) {
         $myWishList->removeItem();
     }
 
-    function addItemsInWishlist(Page\MyWishList $myWishList) {
-        $myWishList->addItemsInWishlist();
-    }
+
+
     
 
 

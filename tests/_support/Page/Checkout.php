@@ -8,6 +8,10 @@ use Exception;
 class Checkout
 {
 
+    public static $loginForm = '//div[@class="col-2"]';
+    public static $email = '#login-email';
+    public static $pass = '#login-password';
+    public static $submit = '//div[@class="col-2"]//button/span';
    
     public static $processCheckout = '//div[@id="cart_mobile"]//button';
     public static $continue = '//div[@id="billing-buttons-container"]//button';
@@ -57,16 +61,33 @@ class Checkout
         
     }
 
+    public function loginInvalid($name, $password)
+    {
+        $I = $this->tester;
+        $I->waitForElement(self::$loginForm);
+        $I->fillField(self::$email, $name);
+        $I->fillField(self::$pass, $password);
+        $I->click(self::$submit);
+
+        return $this;
+    }
+
+
     /**
-     *
+     * @param $name
+     * @param $password
      */
-    public function checkOrder()
+    public function checkOrder($name, $password)
     {
         $I = $this->tester;
         try { $I->waitForElement('//div[@id="cart_mobile"]//button');
             $I->click('//div[@id="cart_mobile"]//button');}
          catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
             $I->click('//ul[@class="checkout-types top"]//button');}
+
+        try {
+            self::loginInvalid($name, $password);
+        } catch (Exception $e) {}
         
         $I->waitForText('Checkout');
         $I->getVisibleText('Billing Information');
