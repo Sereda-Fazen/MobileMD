@@ -49,12 +49,12 @@ env:
 
 # --run in browserstack--
 
-          #host: 'hub.browserstack.com'
-          #port: 80
-          #browser: 'iPad'
-          #browsername: 'iPad'
-          #restart: false
-          #os: ios
+           host: 'hub.browserstack.com'
+           port: 80
+           browser: 'iPad'
+           browsername: 'iPad'
+           restart: false
+           os: ios
 
 
 # -- login in browserstack
