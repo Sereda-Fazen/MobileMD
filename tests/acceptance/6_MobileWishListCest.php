@@ -17,6 +17,7 @@ class MobileWishListCest
         $myWishList->addShare();
         $myWishList->removeItem();
     }
+
     function mobileAddItemsFromWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList) {
         $I->loginSuccess('mowdirect@gmail.com', '123456');
         $myWishList->addItemsInWishlist();

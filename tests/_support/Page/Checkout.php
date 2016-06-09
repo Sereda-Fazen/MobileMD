@@ -118,10 +118,12 @@ class Checkout
 
         $I->waitForElementVisible(self::$continue4);
 
+        $I->scrollDown(200);
         $I->click(self::$continue4);
         try {
             $I->acceptPopup();
         } catch (Exception $e) {}
+        $I->scrollDown(200);
         $I->click(self::$bankTransfer);
         $I->click(self::$continue4);
 

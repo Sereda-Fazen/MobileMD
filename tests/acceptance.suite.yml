@@ -6,68 +6,72 @@ modules:
 
 
     config:
-        WebDriver:
-            url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
-            restart: false
-            browser: chrome
-            window_size: 320x568
-
-
-# --run in browserstack--
-
-            #host: 'hub.browserstack.com'
-            #port: 80
-
-
-# -- login in browserstack
-
-            capabilities:
-             browserstack.user: 'cadencewatch1'
-             browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
-
-
-             browserstack.debug: 'true'
-             unexpectedAlertBehaviour: 'accept'
-             pageLoadStrategy: 'eager'
-
-
-
+      WebDriver:
+          url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
+          restart: false
+          browser: chrome
+          #window_size: 768x1024
+          #window_size: 320x568
 
 
 env:
-  iPad2:
-    modules:
+   DESKTOP:
+
+   MOBILE:
+     modules:
       config:
           WebDriver:
-            url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
-            restart: false
-            browser: chrome
-            window_size: 768x1024
-            clear_cookies: false
-            
+              url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
+              restart: false
+  # --run in browserstack--
+              host: 'hub.browserstack.com'
+              port: 80
+              browserName: 'android'
+              browser: 'Android'
+              restart: false
+              platform: ANDROID
+  # -- login in browserstack
+              capabilities:
+               browserstack.user: 'cadencewatch1'
+               browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+               browserstack.debug: 'true'
+               unexpectedAlertBehaviour: 'accept'
+               pageLoadStrategy: 'eager'
 
 
-# --run in browserstack--
-
-           host: 'hub.browserstack.com'
-           port: 80
-           browser: 'iPad'
-           browsername: 'iPad'
-           restart: false
-           os: ios
 
 
-# -- login in browserstack
-
-            capabilities:
-             browserstack.user: 'cadencewatch1'
-             browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
 
 
-             browserstack.debug: 'true'
-             unexpectedAlertBehaviour: 'accept'
-             pageLoadStrategy: 'eager'
 
 
+
+
+
+
+
+
+
+
+
+
+   TABLET:
+     modules:
+       config:
+          WebDriver:
+              url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
+              restart: false
+  # --run in browserstack--
+              host: 'hub.browserstack.com'
+              port: 80
+              browser: 'android'
+              os: android
+  # -- login in browserstack
+              capabilities:
+               browserstack.user: 'cadencewatch1'
+               browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+               browserstack.debug: 'true'
+               unexpectedAlertBehaviour: 'accept'
+               pageLoadStrategy: 'eager'
 
 

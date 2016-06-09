@@ -47,7 +47,7 @@ class LoginSteps extends \AcceptanceTester
     public function loginSuccess ($login,$pass)
     {
         $I = $this;
-        try {
+
             $I->amOnUrl('http://www.mowdirect.co.uk/');
             $I->waitForElement('//div[@class="skip-links"]/a[3]');
             $I->click('//div[@class="skip-links"]/a[3]');
@@ -58,7 +58,7 @@ class LoginSteps extends \AcceptanceTester
             $I->click('//div[@class="buttons-set"]//button/span');
             $I->waitForElement('p.hello > strong');
             $I->see('Hello    Test Test1 Test2', 'p.hello > strong');
-        } catch (Exception $e) {};
+        
     }
 
 

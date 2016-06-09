@@ -12,12 +12,7 @@ class SearchCest
         $search->searchWrong('invalid');
         $I->see('No Results', '//div[@class="gs-snippet"]');
     }
-/*
-    function checkSearchWrong(Page\Search $search, \AcceptanceTester $I) {
-        $search->searchInvalid('инвалид');
-        $I->see('No Results', '//div[@class="gs-snippet"]');
-    }
-*/
+
     function checkSearchNumber(Page\Search $search, \AcceptanceTester $I) {
         $search->search();
         $search->searchWrong('Lawn7Garden');
