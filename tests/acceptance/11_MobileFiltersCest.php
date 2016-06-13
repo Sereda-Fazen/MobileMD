@@ -1,21 +1,15 @@
 <?php
-use \Step\Acceptance;
 
 /**
- * @group test
+ * @group mobileFilter
  */
-class TestCest
+class MobileFiltersCest
 {
-
 
 
     function T965TestACheckboxFilter(Step\Acceptance\FiltersSteps $I, \Page\MobileFilters $filtersMowDirect) {
         $filtersMowDirect->filtersCheckbox();
-        //$I->checkFilters();
+        $I->checkFilters();
     }
 
-
-
-
 }
-
