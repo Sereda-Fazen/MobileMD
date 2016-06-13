@@ -1,6 +1,8 @@
 <?php
 namespace Page;
 use Codeception\Util\Locator;
+use Exception;
+
 class MyWishList
 {
 
@@ -35,7 +37,8 @@ class MyWishList
     public static $removeFromCartTablet = '//td[@class="a-center product-cart-remove last"]/a';
 
     public static $cart = '//*[@class="skip-links"]/div/a';
-    public static $removeItem = '//*[@id="cart-sidebar"]/li/div/a';
+    public static $removeItem = '//*[@id="cart_mobile"]//tbody//td[2]/a';
+    public static $removeItem2 = '//tr[@class="first last odd"]/td[6]/a';
 
     //remove
 
@@ -89,22 +92,10 @@ class MyWishList
         $I->click(self::$seeAddToWishList);
         $I->getVisibleText('My Wishlist');
         $I->waitForElement(self::$successMsg);
-        $I->click(self::$here);
-        $I->amOnPage(self::$urlReturn);
-        $I->scrollDown(300);
-        $I->waitForElement(self::$ourTops);
-        $I->click(self::$ourTops);
-        $I->waitForElement(self::$clickProd2);
-        $I->click(self::$clickProd2);
-        $I->waitForElement(self::$seeAddToWishList);
-        $I->click(self::$seeAddToWishList);
-        $I->getVisibleText('My Wishlist');
-        $I->waitForElement(self::$successMsg);
-        $I->waitForElement(self::$seeLastEven);
-        
+
     }
 
-
+/*
     public function removeItemFromWishList(){
         $I = $this->tester;
         $I->waitForElement(self::$clickRemove);
@@ -113,7 +104,7 @@ class MyWishList
         $I->waitForElementNotVisible(self::$seeLastEven);
         $I->dontSeeElement(self::$seeLastEven);
     }
-
+*/
 
     public function addComment(){
         $I =$this->tester;
@@ -152,24 +143,30 @@ class MyWishList
 
     public function addItemsInWishlist(){
         $I = $this->tester;
-        self::checkItems();
+
+        $I->waitForElement(self::$clickAccount);
+        $I->click(self::$clickAccount);
+        $I->waitForElement(self::$accountMenu);
+        $I->wait(2);
+        $I->click(self::$accountMenu);
+        $I->waitForElement(self::$myWishlist);
+        $I->click(self::$myWishlist);
+
         $I->waitForElement(self::$addBasket);
         $I->click(self::$addBasket);
         $I->waitForElement(self::$successMsg);
-        $I->see('2 product(s) have been added to shopping basket:',self::$successMsg);
-        /*
-        $I->click(Locator::combine(self::$removeFromCartMobile,self::$removeFromCartTablet));
-        $I->click(Locator::combine(self::$removeFromCartTablet,self::$removeFromCartMobile));
-        */
+        $I->seeElement(self::$successMsg);
+
         $I->click(self::$cart);
+        try{
         $I->waitForElement(self::$removeItem);
-        $I->click(self::$removeItem);
-        $I->acceptPopup();
-        $I->waitForText('Item was removed successfully.');
-        $I->click(self::$removeItem);
-        $I->acceptPopup();
-        $I->waitForText('Item was removed successfully.');
-        
+        $I->click(self::$removeItem);}
+        catch (Exception $e) {
+            $I->waitForElement(self::$removeItem2);
+            $I->click(self::$removeItem2);
+        }
+        $I->waitForText('Your Basket is empty...');
+
 
         
     }

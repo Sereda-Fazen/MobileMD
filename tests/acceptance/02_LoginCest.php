@@ -1,7 +1,7 @@
 <?php
 use Step\Acceptance;
 /**
- * @group login
+ * @group mobilelogin
  */
 class LoginCest
 {
