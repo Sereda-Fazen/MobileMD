@@ -10,7 +10,7 @@ modules:
           url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
           restart: false
           browser: chrome
-          #window_size: 768x1024
+          window_size: 768x1024
           #window_size: 360x640
 
 
@@ -64,8 +64,11 @@ env:
   # --run in browserstack--
               host: 'hub.browserstack.com'
               port: 80
-              browser: 'android'
-              os: android
+              #browserName: android
+              browser: android
+              platform: ANDROID
+              device: Samsung Galaxy S5
+              #os: android
   # -- login in browserstack
               capabilities:
                browserstack.user: 'cadencewatch1'
