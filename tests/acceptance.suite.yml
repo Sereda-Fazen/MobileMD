@@ -11,7 +11,7 @@ modules:
           restart: false
           browser: chrome
           window_size: 768x1024
-          #window_size: 320x568
+          #window_size: 360x640
 
 
 env:

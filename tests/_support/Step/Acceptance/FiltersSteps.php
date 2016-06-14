@@ -19,27 +19,35 @@ class FiltersSteps extends \AcceptanceTester
     public function removeFilter(){
         $I = $this;
         $I->waitForAjax(10);
-        $I->click('//div[@class="currently"]//ol/li/a');
+        $I->click('//div[@class="currently"]//a');
         $I->wait(2);
     }
 
     public function checkFilters()
     {
         $I = $this;
+        $I->waitForElement('//*[@class="mb-mana-catalog-leftnav"]');
+        $I->click('//*[@class="mb-mana-catalog-leftnav"]');
         $I->waitForElement('//dl[@class="narrow-by-list"]');
 
 
         for ($t = 2; $t <= 11; $t++) {
+
+            $manufact = count($I->grabMultiple('//*[@class="narrow-by-list"]/dd['.$t.']//li'));
+
+            $I->click('//*[@class="narrow-by-list"]//dt['.$t.']');
+
             try {
                 $I->click('//dl[@class="narrow-by-list"]//dd[2]/div/a[2]');
-            } catch (Exception $e) {}
-            try {$I->click('//dl[@class="narrow-by-list"]//dd[7]/div/a[2]');}
-              catch (Exception $e){}
-            try {$I->click('//dl[@class="narrow-by-list"]//dd[10]/div/a[2]');}
-              catch (Exception $e){}
+                } catch (Exception $e) {}
+            try {$I->click('//dl[@class="narrow-by-list"]//dd[7]/div/a[2]');
+                } catch (Exception $e){}
+            try {$I->click('//dl[@class="narrow-by-list"]//dd[10]/div/a[2]');
+                } catch (Exception $e){}
 
-            $manufact = count($I->grabMultiple('//dl[@class="narrow-by-list"]//dd[' . $t . ']//li'));
-            $I->click('//dl[@class="narrow-by-list"]//dd[' . $t . ']//li[' . rand(1, $manufact) . ']');
+
+            $I->wait(2);
+            $I->click('//*[@class="narrow-by-list"]//dd['.$t.']//li['.rand(1,$manufact).']');
             $I->waitForAjax(10);
             $I->exceptions();
             $I->waitForElement('//div[@class="currently"]//ol/li//span');
@@ -47,7 +55,7 @@ class FiltersSteps extends \AcceptanceTester
             switch ($t) {
 
                 case 2:
-                    $I->see('Manufacturer:', '//div[@class="currently"]//ol/li//span');
+                    $I->see('Manufacturer:', '//div[@class="currently"]/ol//span');
                     $I->removeFilter();
                     break;
 
@@ -96,8 +104,11 @@ class FiltersSteps extends \AcceptanceTester
                     $I->removeFilter();
                     break;
             }
+
         }
+
     }
+
 
 
         /*

@@ -11,7 +11,7 @@ class TestCest
 
     function T965TestACheckboxFilter(Step\Acceptance\FiltersSteps $I, \Page\MobileFilters $filtersMowDirect) {
         $filtersMowDirect->filtersCheckbox();
-        //$I->checkFilters();
+        $I->checkFilters();
     }
 
 
