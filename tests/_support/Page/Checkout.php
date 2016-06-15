@@ -120,11 +120,7 @@ class Checkout
         $I->waitForElementVisible(self::$continue4);
 
         $I->scrollDown(200);
-        $I->click(self::$continue4);
-        try {
-            $I->acceptPopup();
-        } catch (Exception $e) {}
-        $I->scrollDown(200);
+
         $I->click(self::$bankTransfer);
         $I->click(self::$continue4);
 
@@ -146,7 +142,7 @@ class Checkout
         $I->waitForElementVisible(self::$continue5);
 
         $I->click(self::$continue5);
-        $I->waitForText('Your order has been received.');
+        $I->waitForText('Your order has been received.',30);
         $I->see('Your order has been received.',self::$seeOrder);
         $I->getVisibleText('Thank you for your purchase!');
         $I->click(self::$keepContinue);

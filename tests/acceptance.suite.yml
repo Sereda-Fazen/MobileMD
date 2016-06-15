@@ -64,15 +64,17 @@ env:
   # --run in browserstack--
               host: 'hub.browserstack.com'
               port: 80
-              #browserName: android
               browser: android
-              platform: ANDROID
-              device: Samsung Galaxy S5
+
+
               #os: android
   # -- login in browserstack
               capabilities:
                browserstack.user: 'cadencewatch1'
                browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+
+               platform: 'ANDROID'
+               device: 'Amazon Kindle Fire HDX 7'
                browserstack.debug: 'true'
                unexpectedAlertBehaviour: 'accept'
                pageLoadStrategy: 'eager'
