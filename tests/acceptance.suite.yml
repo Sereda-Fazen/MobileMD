@@ -37,6 +37,8 @@ env:
                browserstack.debug: 'true'
                unexpectedAlertBehaviour: 'accept'
                pageLoadStrategy: 'eager'
+               autoAcceptAlerts:  'true'
+               autoDismissAlerts:  'true'
 
 
 

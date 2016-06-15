@@ -36,6 +36,10 @@ class Checkout
     public static $showPayment = '//li[@id="opc-payment"]';
     public static $continue4 = '//li[@id="opc-payment"]//button';
     public static $bankTransfer = '//*[@id="co-payment-form"]//dl/dt[2]/input';
+    public static $payPalCredit = '//*[@id="co-payment-form"]//dl/dt[4]/input';
+    public static $errorUnable = '//li[@class="error-msg"]';
+    public static $removeItem = '//div[@id="cart_mobile"]//tbody//td[2]//a';
+
 
     //order
 
@@ -83,13 +87,13 @@ class Checkout
         $I = $this->tester;
         try { $I->waitForElement('//div[@id="cart_mobile"]//button');
             $I->click('//div[@id="cart_mobile"]//button');}
-         catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
+        catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
             $I->click('//ul[@class="checkout-types top"]//button');}
 
         try {
             self::loginInvalid($name, $password);
         } catch (Exception $e) {}
-        
+
         $I->waitForText('Checkout');
         $I->getVisibleText('Billing Information');
         $I->seeElement(self::$formList);
@@ -105,7 +109,7 @@ class Checkout
         $I->waitForElement(self::$useAddress);
         $I->scrollDown(200);
         try { $I->waitForElement(self::$continue2);
-        $I->click(self::$continue2);
+            $I->click(self::$continue2);
         } catch (Exception $e) {}
 
         $I->waitForElement(self::$showMethod);
@@ -116,11 +120,12 @@ class Checkout
 
         $I->waitForElement(self::$showPayment);
         $I->waitForText('Payment Information');
-
         $I->waitForElementVisible(self::$continue4);
+        $I->click(self::$continue4);
 
-        $I->scrollDown(200);
 
+        $I->wait(2);
+        $I->waitForElement(self::$bankTransfer);
         $I->click(self::$bankTransfer);
         $I->click(self::$continue4);
 
@@ -134,7 +139,7 @@ class Checkout
         $I->getVisibleText('PAYMENT METHOD');
         $I->getVisibleText('Cheque or Bank Transfer');
         $I->waitForElement(self::$productTable);
-        $I->scrollDown(800);
+
         $I->waitForElement(self::$agree);
         $I->wait(2);
         $I->click(self::$agree);
@@ -148,7 +153,63 @@ class Checkout
         $I->click(self::$keepContinue);
         $I->waitForElement(self::$mainPage);
 
-        
+
+    }
+
+
+    public function checkPayPalCredit($name, $password)
+    {
+        $I = $this->tester;
+        try { $I->waitForElement('//div[@id="cart_mobile"]//button');
+            $I->click('//div[@id="cart_mobile"]//button');}
+        catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
+            $I->click('//ul[@class="checkout-types top"]//button');}
+
+        try {
+            self::loginInvalid($name, $password);
+        } catch (Exception $e) {}
+
+        $I->waitForText('Checkout');
+        $I->getVisibleText('Billing Information');
+        $I->seeElement(self::$formList);
+        $I->seeElement(self::$deliver);
+        $I->seeElement(self::$differentAddress);
+        $I->scrollDown(200);
+        $I->waitForElement(self::$continue);
+        $I->click(self::$continue);
+        $I->waitForElementNotVisible('//*[@id="billing-please-wait"]');
+
+        $I->waitForElement(self::$showDelivery);
+        $I->waitForText('Delivery Information');
+        $I->waitForElement(self::$useAddress);
+        $I->scrollDown(200);
+        try { $I->waitForElement(self::$continue2);
+            $I->click(self::$continue2);
+        } catch (Exception $e) {}
+
+        $I->waitForElement(self::$showMethod);
+        $I->waitForText('Delivery Method');
+        $I->waitForElement(self::$continue3);
+        $I->wait(2);
+        $I->click(self::$continue3);
+
+        $I->waitForElement(self::$showPayment);
+        $I->waitForText('Payment Information');
+        $I->waitForElementVisible(self::$continue4);
+
+
+        $I->waitForElement(self::$payPalCredit);
+        $I->click(self::$payPalCredit);
+        $I->wait(2);
+        $I->click(self::$continue4);
+        try {
+            $I->waitForElement(self::$errorUnable);
+            $I->see('Unable to communicate with the PayPal gateway.',self::$errorUnable);
+            $I->click(self::$removeItem);
+            $I->waitForText('Your Basket is empty...');
+        } catch (Exception $e){}
+
+
     }
     
 

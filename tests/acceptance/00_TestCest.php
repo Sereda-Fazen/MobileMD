@@ -9,9 +9,9 @@ class TestCest
 
 
 
-    function T965TestACheckboxFilter(Step\Acceptance\FiltersSteps $I, \Page\MobileFilters $filtersMowDirect) {
-        $filtersMowDirect->filtersCheckbox();
-        $I->checkFilters();
+    function mobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
+        $I->mobileSellTractor();
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
