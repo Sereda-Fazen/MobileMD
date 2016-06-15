@@ -76,6 +76,7 @@ class CheckoutSteps extends \AcceptanceTester
     public function mobileSelectBrand($flymoGrass, $flymoVacs, $qty)
     {
         $I = $this;
+        $I->amOnPage('/');
         $I->click('//div[@class="skip-links"]//a[2]');
         $I->waitForElement('//div[@id="header-search"]//div/input');
         $I->fillField('//div[@id="header-search"]//div/input', $flymoGrass);
@@ -122,7 +123,7 @@ class CheckoutSteps extends \AcceptanceTester
     {
         $I = $this;
 
-
+        $I->amOnPage('/');
         $I->click('//div[@class="skip-links"]//a[2]');
         $I->waitForElement('//div[@id="header-search"]//div/input');
         $I->fillField('//div[@id="header-search"]//div/input', 'Westwood F Series 4TRAC Garden Tractors');

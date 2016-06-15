@@ -52,8 +52,8 @@ class MobileCheckoutCest
      * T922_Purchase Multiple Different Products Same supplie
      * @param \Page\Checkout $checkoutPage
      */
-
 /*
+
     function mobilePurchaseMultipleDifferentProductsSameSupplie(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSelectBrand('Flymo grass trimmer','Flymo Vacs & Blowers','2');
         //$checkoutPage->checkOrder('mowdirect@gmail.com','123456');
@@ -65,11 +65,11 @@ class MobileCheckoutCest
      * @param \Page\Checkout $checkoutPage
      */
 
-
 /*
+
     function mobilePurchaseMultipleNumberProducts(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSelectBrands();
-        //$checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
@@ -81,21 +81,23 @@ class MobileCheckoutCest
      */
 
 /*
-    function purchaseTractorOptional(\Page\Search $search, \Page\Checkout $checkoutPage) {
+    function purchaseTractorOptional(\Page\Search $search, \Page\Checkout $checkoutPage)
+    {
         $search->search();
         $search->searchWrong('Lawnflite accessories optional');
         $search->purchaseTractorOptional();
         //$checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
     
-
-    
-    
-    
 */
+    
+    
+    
+
 
 
     
 
 }
+
 
