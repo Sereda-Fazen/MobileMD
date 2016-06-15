@@ -31,6 +31,9 @@ class ShoppingCart
     public static $payPalCredit = '//div[@id="cart_mobile"]//div[3]//ul/li[2]//img';
 
 
+    public static $payPalCheckoutLinkTablet = '//ul[@class="checkout-types bottom"]/li/p//img';
+    public static $payPalCreditTablet = '//ul[@class="checkout-types bottom"]//li[3]//img';
+
     //PayPal Page
     public static $payPalLogo = '//*[@id="paypalLogo"]';
     public static $errorUnable = '//li[@class="error-msg"]';
@@ -53,8 +56,11 @@ class ShoppingCart
 
     public function payPalCheckout(){
         $I = $this->tester;
-        $I->waitForElementVisible(self::$payPalCheckoutLink);
-        $I->click(self::$payPalCheckoutLink);
+        try {
+            $I->waitForElementVisible(self::$payPalCheckoutLink);
+            $I->click(self::$payPalCheckoutLink);
+        } catch (Exception $e) { $I->waitForElementVisible(self::$payPalCheckoutLinkTablet);
+            $I->click(self::$payPalCheckoutLinkTablet);}
         try {
             $I->waitForElement(self::$errorUnable);
             $I->see('Unable to communicate with the PayPal gateway.',self::$errorUnable);
@@ -70,8 +76,11 @@ class ShoppingCart
 
     public function payPalCredit(){
         $I = $this->tester;
-        $I->waitForElementVisible(self::$payPalCredit);
-        $I->click(self::$payPalCredit);
+        try {
+            $I->waitForElementVisible(self::$payPalCredit);
+            $I->click(self::$payPalCredit);
+        } catch (Exception $e) {$I->waitForElementVisible(self::$payPalCreditTablet);
+            $I->click(self::$payPalCreditTablet);}
         try {
             $I->waitForElement(self::$errorUnable);
             $I->see('Unable to communicate with the PayPal gateway.',self::$errorUnable);

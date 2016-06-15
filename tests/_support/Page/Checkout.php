@@ -39,6 +39,7 @@ class Checkout
     public static $payPalCredit = '//*[@id="co-payment-form"]//dl/dt[4]/input';
     public static $errorUnable = '//li[@class="error-msg"]';
     public static $removeItem = '//div[@id="cart_mobile"]//tbody//td[2]//a';
+    public static $removeItem2 = '//div[@id="cart_desktop"]//tbody//td[6]//a';
 
 
     //order
@@ -205,7 +206,7 @@ class Checkout
         try {
             $I->waitForElement(self::$errorUnable);
             $I->see('Unable to communicate with the PayPal gateway.',self::$errorUnable);
-            $I->click(self::$removeItem);
+            try {$I->click(self::$removeItem);} catch (Exception $e) {$I->click(self::$removeItem2);}
             $I->waitForText('Your Basket is empty...');
         } catch (Exception $e){}
 
