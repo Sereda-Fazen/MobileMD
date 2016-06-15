@@ -35,6 +35,7 @@ class FiltersSteps extends \AcceptanceTester
 
             $manufact = count($I->grabMultiple('//*[@class="narrow-by-list"]/dd['.$t.']//li'));
 
+            $I->waitForElementVisible('//*[@class="narrow-by-list"]//dt['.$t.']');
             $I->click('//*[@class="narrow-by-list"]//dt['.$t.']');
 
             try {
