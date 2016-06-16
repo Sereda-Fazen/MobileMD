@@ -122,8 +122,6 @@ class Checkout
         $I->waitForElement(self::$showPayment);
         $I->waitForText('Payment Information');
         $I->waitForElementVisible(self::$continue4);
-        $I->click(self::$continue4);
-
 
         $I->wait(2);
         $I->waitForElement(self::$bankTransfer);

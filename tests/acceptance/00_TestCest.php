@@ -9,9 +9,9 @@ class TestCest
 
 
 
-    function T1267PayPalCreditCheckout(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
+    function mobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
         $I->mobileSellTractor();
-        $checkoutPage->checkPayPalCredit('mowdirect@gmail.com','123456');
+        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
 
 
