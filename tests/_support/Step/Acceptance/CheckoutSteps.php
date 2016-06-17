@@ -1,5 +1,7 @@
 <?php
 namespace Step\Acceptance;
+use Exception;
+
 class CheckoutSteps extends \AcceptanceTester
 {
 
@@ -67,52 +69,53 @@ class CheckoutSteps extends \AcceptanceTester
 
     }
 
-    /**
-     * Brand
-     * @param $flymoGrass
-     * @param $flymoVacs
-     * @param $qty
-     */
 
-    public function mobileSelectBrand($flymoGrass, $flymoVacs, $qty)
+
+    public function mobileSelectBrand($qty)
     {
         $I = $this;
+        for ($b =1; $b <= 2; $b++) {
         $I->amOnPage('/');
-        $I->click('//div[@class="skip-links"]//a[2]');
-        $I->waitForElement('//div[@id="header-search"]//div/input');
-        $I->fillField('//div[@id="header-search"]//div/input', $flymoGrass);
-        $I->click('//div[@id="header-search"]//button');
-        $I->scrollDown(200);
-        $I->waitForElement('//*[@class="gsc-expansionArea"]/div[2]/div/div');
 
-        $I->click('//*[@class="gsc-expansionArea"]/div[1]/div/div');
-        $I->waitForElement('//div[@class="add-to-cart-buttons"]/button');
-        $I->click('//div[@class="add-to-cart-buttons"]/button');
-       
-        $I->waitForElement('//li[@class="success-msg"]');
-        $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
+        $I->waitForElement('//*[@class="brands"]');
+        $I->waitForElement('//*[@id="brandsViewAll"]');
 
+        $I->scrollTo('//*[@id="brandsViewAll"]', 100);
+        $I->click('//*[@id="brandsViewAll"]');
+        $brands = count($I->grabMultiple('//*[@id="md-brand-list"]/li'));
 
+            $I->click('//*[@id="md-brand-list"]/li[' . rand(1, $brands) . ']/a');
+            $I->waitForElement('//*[@class="mdgo-page-title main-container"]/h1');
+            $I->click('//div[@class="category-collateral"]/div');
 
-        $I->click('//div[@class="skip-links"]//a[2]');
-        $I->waitForElement('//div[@id="header-search"]//div/input');
-        $I->fillField('//div[@id="header-search"]//div/input', $flymoVacs);
-        $I->click('//div[@id="header-search"]//button');
-        $I->scrollDown(200);
-        $I->waitForElement('//*[@class="gs-webResult gs-result"]/div');
-        $I->click('//*[@class="gs-webResult gs-result"]/div');
-        $I->waitForElement('//p[@class="action"]//button');
-        $I->click('//p[@class="action"]//button');
-        $I->waitForElement('//li[@class="success-msg"]');
-        $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
+            $I->scrollDown(200);
+            try {
+                $I->waitForElement('//div[@class="add-to-cart-buttons"]/button');
+                $I->click('//div[@class="add-to-cart-buttons"]/button');
+            } catch (Exception $e) {
+                $I->waitForElement('//p[@class="action"]/button');
+                $I->click('//p[@class="action"]/button');
+            }
 
-        $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]');
-        $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]//input');
-        $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//input');
-        $I->waitForElementVisible('//div[@id="cart_mobile"]//tbody//tr[2]//button');
-        $I->fillField('//div[@id="cart_mobile"]//tbody//tr[2]//input', $qty);
-        $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//button');
-        $I->getVisibleText($qty, '//div[@id="cart_mobile"]//tbody//tr[2]//input');
+            $I->waitForElement('//li[@class="success-msg"]');
+            $I->see('was added to your shopping cart.', '//li[@class="success-msg"]');
+        }
+        
+        try {
+            $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]');
+            $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]//input');
+            $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//input');
+            $I->waitForElementVisible('//div[@id="cart_mobile"]//tbody//tr[2]//button');
+            $I->fillField('//div[@id="cart_mobile"]//tbody//tr[2]//input', $qty);
+            $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//button');
+            $I->getVisibleText($qty, '//div[@id="cart_mobile"]//tbody//tr[2]//input');
+        } catch (Exception $e) {
+            $I->waitForElement('//tr[@class="last even"]');
+            $I->fillField('//tr[@class="last even"]/td[4]/input',$qty);
+            $I->click('//tr[@class="last even"]/td[4]/button');
+            $I->getVisibleText($qty, '//tr[@class="last even"]/td[4]/input');
+            
+        }
 
 
     }
@@ -120,53 +123,86 @@ class CheckoutSteps extends \AcceptanceTester
 
 
 
-    public function mobileSelectBrands()
+    public function mobileSelectBrands($qty)
     {
         $I = $this;
-
+        for ($f = 1; $f <= 2; $f++) {
         $I->amOnPage('/');
-        $I->click('//div[@class="skip-links"]//a[2]');
-        $I->waitForElement('//div[@id="header-search"]//div/input');
-        $I->fillField('//div[@id="header-search"]//div/input', 'Westwood F Series 4TRAC Garden Tractors');
-        $I->click('//div[@id="header-search"]//button');
-        $I->scrollDown(200);
-        $I->waitForElement('//*[@class="gsc-expansionArea"]/div[1]/div/div');
-        $I->click('//*[@class="gsc-webResult gsc-result"]/div/div');
-        $I->scrollDown(200);
-        $I->wait(2);
-        $I->waitForElement('//p[@class="action"]//button');
-        $I->click('//p[@class="action"]//button');
-        $I->waitForElement('//li[@class="success-msg"]');
-        $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
 
+        $I->waitForElement('//*[@class="brands"]');
+        $I->waitForElement('//*[@id="brandsViewAll"]');
 
-        $I->click('//div[@class="skip-links"]//a[2]');
-        $I->waitForElement('//div[@id="header-search"]//div/input');
-        $I->fillField('//div[@id="header-search"]//div/input', 'Viking Garden Shredders');
-        $I->click('//div[@id="header-search"]//button');
-        $I->scrollDown(200);
-        $I->waitForElement('//*[@class="gs-webResult gs-result"]/div');
-        $I->click('//*[@class="gs-webResult gs-result"]/div');
-        $I->waitForElement('//p[@class="action"]//button');
-        $I->click('//p[@class="action"]//button');
-        $I->waitForElement('//li[@class="success-msg"]');
-        $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
+        $I->scrollTo('//*[@id="brandsViewAll"]', 100);
+        $I->click('//*[@id="brandsViewAll"]');
 
+            $I->scrollTo('//*[@id="md-mobile-social-links"]');
+            $I->waitForElement('//*[@id="md-brand-list"]//img');
+            $I->click('//*[@id="md-brand-list"]//img');
 
+            $I->waitForElement('//*[@class="mdgo-page-title main-container"]/h1');
+            $I->click('//div[@class="category-collateral"]/div['.$f.']');
 
+            $I->scrollDown(200);
+            try {
+                $I->waitForElement('//div[@class="add-to-cart-buttons"]/button');
+                $I->click('//div[@class="add-to-cart-buttons"]/button');
+            } catch (Exception $e) {
+                $I->waitForElement('//p[@class="action"]/button');
+                $I->click('//p[@class="action"]/button');
+            }
 
-        $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]');
-        $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]//input');
-        $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//input');
-        $I->waitForElementVisible('//div[@id="cart_mobile"]//tbody//tr[2]//button');
-        $I->fillField('//div[@id="cart_mobile"]//tbody//tr[2]//input', '3');
-        $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//button');
-        $I->getVisibleText('3', '//div[@id="cart_mobile"]//tbody//tr[2]//input');
+            $I->waitForElement('//li[@class="success-msg"]');
+            $I->see('was added to your shopping cart.', '//li[@class="success-msg"]');
+        }
 
+        try {
+            $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]');
+            $I->waitForElement('//div[@id="cart_mobile"]//tbody//tr[2]//input');
+            $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//input');
+            $I->waitForElementVisible('//div[@id="cart_mobile"]//tbody//tr[2]//button');
+            $I->fillField('//div[@id="cart_mobile"]//tbody//tr[2]//input', $qty);
+            $I->click('//div[@id="cart_mobile"]//tbody//tr[2]//button');
+            $I->getVisibleText($qty, '//div[@id="cart_mobile"]//tbody//tr[2]//input');
+        } catch (Exception $e) {
+
+            $I->waitForElement('//tr[@class="last even"]');
+            $I->fillField('//tr[@class="last even"]/td[4]/input',$qty);
+            $I->click('//tr[@class="last even"]/td[4]/button');
+            $I->getVisibleText($qty, '//tr[@class="last even"]/td[4]/input');
+
+        }
 
     }
+    
+
+    public function optional(){
+        $I = $this;
+        $I->amOnPage('/');
+        $I->waitForElement('//div[@class="skip-links"]//a[1]');
+        $I->click('//div[@class="skip-links"]//a[1]');
+        $I->waitForElement('//*[@id="menu-mobile-2430"]/div[1]/span');
+        $I->click('//*[@id="menu-mobile-2430"]/div[1]/span');
+        $I->waitForElement('//*[@id="submenu-mobile-2430"]/div[6]');
+        $I->click('//*[@id="submenu-mobile-2430"]/div[6]');
+        $I->waitForElement('//*[@class="products-list"]//img');
+        $I->click('//*[@class="products-list"]//img');
+        $I->waitForElement('//*[@class="product-options"]//ul');
+        $optional = count($I->grabMultiple('//*[@class="product-options"]//ul/li'));
+        for ($o =1; $o <= $optional; $o++){
+            $I->click('//*[@class="product-options"]//ul/li['.$o.']/input');
+            $I->waitForElement('//*[@class="checkbox  product-custom-option2523 change-container-classname validation-passed"]');
+        }
 
 
+        try {
+            $I->waitForElement('//div[@class="add-to-cart-buttons"]/button');
+            $I->click('//div[@class="add-to-cart-buttons"]/button');
+        } catch (Exception $e) {
+            $I->waitForElement('//p[@class="action"]/button');
+            $I->click('//p[@class="action"]/button');
+        }
+        $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
+    }
 
 
 

@@ -141,6 +141,8 @@ class Checkout
 
         $I->waitForElement(self::$agree);
         $I->wait(2);
+        try {$I->waitForElement('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+        $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');} catch (Exception $e) {}
         $I->click(self::$agree);
         $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
