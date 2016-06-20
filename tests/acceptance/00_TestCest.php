@@ -10,16 +10,12 @@ class TestCest
 
 
 
-    /**
-     * @param Acceptance\CheckoutSteps $I
-     * @param \Page\Checkout $checkoutPage
-     */
 
-    function purchaseTractorOptional(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage)
-    {
-        $I->optional();
+    function mobilePurchaseMultipleDifferentProductsSameSupplie(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage){
+        $I->mobileSelectBrand('2');
         $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
     }
+
 
 
 
