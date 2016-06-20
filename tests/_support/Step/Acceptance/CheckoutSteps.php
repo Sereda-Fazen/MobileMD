@@ -64,6 +64,7 @@ class CheckoutSteps extends \AcceptanceTester
         $I->waitForElement('//*[@id="menu-mobile-1935"]/div/a/span');
         $I->click('//*[@id="menu-mobile-1935"]/div/a/span');
         $I->waitForElement('//p[@class="action"]/button');
+        $I->wait(2);
         $I->click('//p[@class="action"]/button');
         $I->see('was added to your shopping cart.','//li[@class="success-msg"]');
 
