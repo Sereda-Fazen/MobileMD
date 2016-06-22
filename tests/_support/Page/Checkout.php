@@ -41,6 +41,9 @@ class Checkout
     public static $removeItem = '//div[@id="cart_mobile"]//tbody//td[2]//a';
     public static $removeItem2 = '//div[@id="cart_desktop"]//tbody//td[6]//a';
 
+    // suge purchase
+
+    public static $sugePurchase = '//*[@id="co-payment-form"]//dl/dt[1]/input';
 
     //order
 
@@ -86,14 +89,18 @@ class Checkout
     public function checkOrder($name, $password)
     {
         $I = $this->tester;
-        try { $I->waitForElement('//div[@id="cart_mobile"]//button');
-            $I->click('//div[@id="cart_mobile"]//button');}
-        catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
-            $I->click('//ul[@class="checkout-types top"]//button');}
+        try {
+            $I->waitForElement('//div[@id="cart_mobile"]//button');
+            $I->click('//div[@id="cart_mobile"]//button');
+        } catch (Exception $e) {
+            $I->waitForElement('//div[@id="cart_mobile"]//button');
+            $I->click('//ul[@class="checkout-types top"]//button');
+        }
 
         try {
             self::loginInvalid($name, $password);
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         $I->waitForText('Checkout');
         $I->getVisibleText('Billing Information');
@@ -109,9 +116,11 @@ class Checkout
         $I->waitForText('Delivery Information');
         $I->waitForElement(self::$useAddress);
         $I->scrollDown(200);
-        try { $I->waitForElement(self::$continue2);
+        try {
+            $I->waitForElement(self::$continue2);
             $I->click(self::$continue2);
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         $I->waitForElement(self::$showMethod);
         $I->waitForText('Delivery Method');
@@ -124,6 +133,12 @@ class Checkout
         $I->waitForElementVisible(self::$continue4);
 
         $I->wait(2);
+    }
+
+    public function mobilePayment($name, $password)
+    {
+        $I = $this->tester;
+        self::checkOrder($name, $password);
         $I->waitForElement(self::$bankTransfer);
         $I->click(self::$bankTransfer);
         $I->click(self::$continue4);
@@ -161,44 +176,7 @@ class Checkout
     public function checkPayPalCredit($name, $password)
     {
         $I = $this->tester;
-        try { $I->waitForElement('//div[@id="cart_mobile"]//button');
-            $I->click('//div[@id="cart_mobile"]//button');}
-        catch (Exception $e) {$I->waitForElement('//div[@id="cart_mobile"]//button');
-            $I->click('//ul[@class="checkout-types top"]//button');}
-
-        try {
-            self::loginInvalid($name, $password);
-        } catch (Exception $e) {}
-
-        $I->waitForText('Checkout');
-        $I->getVisibleText('Billing Information');
-        $I->seeElement(self::$formList);
-        $I->seeElement(self::$deliver);
-        $I->seeElement(self::$differentAddress);
-        $I->scrollDown(200);
-        $I->waitForElement(self::$continue);
-        $I->click(self::$continue);
-        $I->waitForElementNotVisible('//*[@id="billing-please-wait"]');
-
-        $I->waitForElement(self::$showDelivery);
-        $I->waitForText('Delivery Information');
-        $I->waitForElement(self::$useAddress);
-        $I->scrollDown(200);
-        try { $I->waitForElement(self::$continue2);
-            $I->click(self::$continue2);
-        } catch (Exception $e) {}
-
-        $I->waitForElement(self::$showMethod);
-        $I->waitForText('Delivery Method');
-        $I->waitForElement(self::$continue3);
-        $I->wait(2);
-        $I->click(self::$continue3);
-
-        $I->waitForElement(self::$showPayment);
-        $I->waitForText('Payment Information');
-        $I->waitForElementVisible(self::$continue4);
-
-
+        self::checkOrder($name, $password);
         $I->waitForElement(self::$payPalCredit);
         $I->click(self::$payPalCredit);
         $I->wait(2);
@@ -212,10 +190,42 @@ class Checkout
 
 
     }
-    
 
+    public function checkSugePurchase($name, $password)
+    {
+        $I = $this->tester;
+        self::checkOrder($name, $password);
+        $I->waitForElement(self::$sugePurchase);
+        $I->click(self::$sugePurchase);
+        $I->wait(2);
+        $I->click(self::$continue4);
 
-    
+        $I->waitForElement(self::$showOrder);
+        $I->waitForText('Order Review');
+        $I->waitForElement(self::$yourOrder);
+        $I->getVisibleText('YOUR SELECTION');
+        $I->getVisibleText('INVOICE ADDRESS');
+        $I->getVisibleText('DELIVERY ADDRESS');
+        $I->getVisibleText('DELIVERY METHOD');
+        $I->getVisibleText('PAYMENT METHOD');
+        $I->getVisibleText('Cheque or Bank Transfer');
+        $I->waitForElement(self::$productTable);
+        $I->wait(2);
+        $I->waitForElement(self::$agree);
+        $I->click(self::$agree);
 
+        $I->waitForElementVisible(self::$continue5);
+
+        $I->click(self::$continue5);
+
+        try {
+            $I->wait(5);
+            $I->acceptPopup();
+            $I->amOnPage('/checkout/cart/');
+            $I->click(self::$removeItem);
+            $I->waitForText('Your Basket is empty...');
+        } catch (Exception $e) {
+        }
+    }
 
 }

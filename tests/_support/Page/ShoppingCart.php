@@ -85,15 +85,17 @@ class ShoppingCart
             $I->waitForElement(self::$errorUnable);
             $I->see('Unable to communicate with the PayPal gateway.',self::$errorUnable);
         } catch (Exception $e) {
-            /*
+
             $I->see('Mowdirect', self::$mowdirect);
             $I->waitForElement(self::$payPalCart);
             $I->click(self::$payPalCart);
             $I->waitForElement(self::$showPay);
-            */
+
         }
 
     }
+
+
 
 
 

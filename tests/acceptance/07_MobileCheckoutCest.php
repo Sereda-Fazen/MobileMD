@@ -17,7 +17,7 @@ class MobileCheckoutCest
 
     function mobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
         $I->mobileSellTractor();
-        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
 
@@ -29,7 +29,7 @@ class MobileCheckoutCest
 
     function mobileSellMower(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSellMower();
-        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
 
@@ -43,7 +43,7 @@ class MobileCheckoutCest
     function mobilePurchaseTractorWithOtherProduct(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSellTractor();
         $I->mobilePurchaseOtherItem();
-        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
 
@@ -56,7 +56,7 @@ class MobileCheckoutCest
 
     function mobilePurchaseMultipleDifferentProductsSameSupplie(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage){
         $I->mobileSelectBrand('2');
-        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
    
@@ -67,7 +67,7 @@ class MobileCheckoutCest
      */
     function mobilePurchaseMultipleNumberProducts(\Step\Acceptance\CheckoutSteps $I,\Page\Checkout $checkoutPage){
         $I->mobileSelectBrands('3');
-        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
 
@@ -79,7 +79,7 @@ class MobileCheckoutCest
     function purchaseTractorOptional(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage)
     {
         $I->optional();
-        $checkoutPage->checkOrder('mowdirect@gmail.com','123456');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
     
     

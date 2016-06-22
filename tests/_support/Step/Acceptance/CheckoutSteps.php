@@ -55,6 +55,7 @@ class CheckoutSteps extends \AcceptanceTester
 
     public function mobileSellMower(){
         $I = $this;
+        $I->amOnPage('/');
         $I->waitForElement('//div[@class="skip-links"]//a[1]');
         $I->click('//div[@class="skip-links"]//a[1]');
         $I->waitForElement('//*[@id="menu-mobile-1893"]/div[1]/span');

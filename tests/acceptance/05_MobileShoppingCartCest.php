@@ -5,20 +5,28 @@
 class MobileShoppingCartCest
 {
 
-    function T960PayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
+
+    function T1026MobilePaySugePurchase(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkout) {
+        $I->mobileSellTractor();
+        $checkout->checkSugePurchase('mowdirect@gmail.com','123456');
+    }
+    
+    function T960MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
         $shoppingCartMowDirect->payPalCheckout();
     }
 
-    function T1266PayPalCredit(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
+    function T1266MobilePayPalCredit(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
         $shoppingCartMowDirect->payPalCredit();
     }
   
-    function T1267PayPalCreditCheckout(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
+    function T1267MobilePayPalCreditCheckout(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
         $I->mobileSellTractor();
         $checkoutPage->checkPayPalCredit('mowdirect@gmail.com','123456');
     }
+
+    
 
 
 

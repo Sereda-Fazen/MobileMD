@@ -61,6 +61,60 @@ class LoginSteps extends \AcceptanceTester
         
     }
 
+    public function cycleRate ()
+    {
+        $I = $this;
+        $I->amOnPage('/');
+        //$I->amOnUrl('http://www.mowdirect.co.uk/');
+        $I->waitForElement('//div[@class="skip-links"]//a[1]');
+        $I->click('//div[@class="skip-links"]//a[1]');
+        $I->waitForElement('//*[@id="menu-mobile-2430"]/div[1]/span');
+        $I->click('//*[@id="menu-mobile-2430"]/div[1]/span');
+
+        $I->waitForElement('//*[@id="submenu-mobile-2430"]/div[1]');
+        $I->click('//*[@id="submenu-mobile-2430"]/div[1]');
+        $I->waitForElement('//*[@class="m_rom_filter_type_filter md-image-filter"]//li/a');
+        $I->click('//*[@class="m_rom_filter_type_filter md-image-filter"]//li/a');
+        $I->waitForElement('//div[@class="category-products"]');
+        $I->click('//p[@class="rating-links"]/a[2]');
+        $I->waitForElement('//div[@id="customer-reviews"]');
+        $rate = count($I->grabMultiple('//*[@class="form-list"]//tbody/tr'));
+        for ($r = 1; $r <= $rate; $r++) {
+            $I->click('//*[@class="form-list"]//tbody/tr[' . $r . ']/td[' . rand(2, $rate) . ']/input');
+            $I->wait(1);
+        }
+
+
+        $I->fillField('//*[@class="box-content"]//ul[2]/li//input', 'Test');
+        $I->getVisibleText('Test');
+        $I->fillField('//*[@class="box-content"]//ul[2]/li[2]//input', 'Test2');
+        $I->getVisibleText('Test2');
+        $I->fillField('//textarea[@id="review_field"]', 'Test3');
+        $I->getVisibleText('Test3');
+        try {
+            $I->waitForElement('//div[@class="sweetcaptcha ltr"]');
+        } catch (Exception $e) {
+            $I->click('//*[@class="buttons-set form-buttons btn-only"]/div');
+            $I->waitForElement('//li[@class="success-msg"]');
+            $I->see('Your review has been accepted for moderation.', '//li[@class="success-msg"]');
+
+
+            $I->waitForElement('//*[@class="fright"]//li[3]/a');
+            $I->click('//*[@class="fright"]//li[3]/a');
+            $I->waitForElement('//*[@class="main"]//ul/li[5]');
+            $I->click('//*[@class="main"]//ul/li[5]');
+            $I->waitForElement('//table[@class="data-table"]');
+            $I->click('//table[@class="data-table"]//td[5]/a');
+            $I->waitForElement('//div[@class="product-review"]');
+            $I->waitForElement('//div[@class="product-review"]//table');
+            $I->getVisibleText('FEATURES');
+            $I->getVisibleText('BUILD QUALITY');
+            $I->getVisibleText('ASSEMBLY');
+            $I->getVisibleText('PERFORMANCE');
+            $I->getVisibleText('Test');
+        }
+    }
+
 
 
 
