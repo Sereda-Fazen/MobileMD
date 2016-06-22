@@ -69,6 +69,9 @@ class MyAccountMowDirect
     public static $assertTitle = '//*[@class="page-title title-buttons"]/h1';
     public static $reorderLink = '//*[@class="link-reorder"]';
 
+    public static $removeItem = '//div[@id="cart_mobile"]//tbody//td[2]//a';
+    public static $removeItem2 = '//div[@id="cart_desktop"]//tbody//td[6]//a';
+
     // newsletter
 
     public static $newsletterSubscription = '//*[@class="left-off-canvas-menu"]/div//ul/li[8]/a';
@@ -227,8 +230,9 @@ class MyAccountMowDirect
 
     }
 
-    public function orderReorderCheck (){
-        $I= $this ->tester;
+    public function orderReorderCheck ()
+    {
+        $I = $this->tester;
         self::navigateToAccount();
         $I->waitForElement(self::$reorder);
         $I->click(self::$reorder);
@@ -240,7 +244,11 @@ class MyAccountMowDirect
         $I->click(self::$reorderLink);
         $I->waitForElement(self::$assertTitle);
         $I->getVisibleText('Your Basket');
+        try {$I->click(self::$removeItem); } catch (Exception $e) { $I->click(self::$removeItem2);}
+        $I->waitForText('Your Basket is empty...');
     }
+        
+
 
     public function myInvitationsCheck ($testEmail){
         $I= $this ->tester;

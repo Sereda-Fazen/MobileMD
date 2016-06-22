@@ -7,7 +7,7 @@ class CategoryNavigation
 
     //Top 10
 
-    public static $URL = 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/';
+    public static $URL = '/';
     public static $waitDeals = '//div[@class="skip-links"]//a[1]';
     public static $moveDeals = '//*[@rel="submenu-mobile-3004"]';
     public static $top10 = '//*[@id="submenu-mobile-3004"]/div[5]//span[text()="Top 10 Hedge Trimmer Deals"]';
@@ -37,7 +37,7 @@ class CategoryNavigation
     public function home()
     {
         $I = $this->tester;
-        $I->amOnUrl(self::$URL);
+        $I->amOnPage(self::$URL);
         //$I->amOnPage('/');
 
     }
