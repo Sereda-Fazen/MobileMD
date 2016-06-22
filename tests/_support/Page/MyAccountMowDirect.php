@@ -262,10 +262,12 @@ class MyAccountMowDirect
         $I->see('Send Invitations', self::$assertInvitationPage);
         $I->fillField(self::$inputEmailField1,$testEmail);
         $I->click(self::$sendInvitation);
-        $I->waitForElement(self::$assertSuccessMessage);
+
         try {
+            $I->waitForElement(self::$assertSuccessMessage);
             $I->see('Invitation for', self::$assertSuccessMessage);
         } catch (Exception $e) {
+            $I->waitForElement(self::$assertFalse);
             $I->see('Invitation for same email address already exists.', self::$assertFalse);
         }
     }

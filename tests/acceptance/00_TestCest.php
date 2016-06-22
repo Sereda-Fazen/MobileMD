@@ -7,10 +7,9 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function myAccountOrder(Step\Acceptance\LoginSteps $I, \Page\MyAccountMowDirect $accountMowDirect)
-    {
+    function myInvitations(Step\Acceptance\LoginSteps $I, \Page\MyAccountMowDirect $accountMowDirect){
         $I->loginSuccess('mowdirect@gmail.com', '123456');
-        $accountMowDirect->orderReorderCheck();
+        $accountMowDirect->myInvitationsCheck('test@1.com');
     }
 
 
