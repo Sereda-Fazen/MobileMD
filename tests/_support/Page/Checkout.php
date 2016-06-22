@@ -222,8 +222,7 @@ class Checkout
             $I->wait(5);
             $I->acceptPopup();
             $I->amOnPage('/checkout/cart/');
-            try {
-            $I->click(self::$removeItem);} catch (Exception $e) {$I->click(self::$removeItem2);}
+            try { $I->click(self::$removeItem);} catch (Exception $e) {$I->click(self::$removeItem2);}
             $I->waitForText('Your Basket is empty...');
         } catch (Exception $e) {
         }
