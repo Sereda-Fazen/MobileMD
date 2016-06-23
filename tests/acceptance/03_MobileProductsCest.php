@@ -15,7 +15,7 @@ class MobileProductsCest
      * T917_View a standard Product Layout
      */
 
-    function standardProductLayout(Step\Acceptance\ProductsSteps $I, \Page\Search $search) {
+    function T980MobileProductLayout(Step\Acceptance\ProductsSteps $I, \Page\Search $search) {
         $I->productsLayout();
 
     }
@@ -26,7 +26,7 @@ class MobileProductsCest
     T_934_View a Product layout with custom options
      */
 
-    function mobileLayoutCustomOptions(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
+    function T981MobileLayoutCustomOptions(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
         $search->search();
         $search->searchWrong('optional accessories');
         $I->mobileProductsLayoutCustomOptions();
@@ -39,7 +39,7 @@ class MobileProductsCest
      * T935_View a Product Layout with a Banner advert
      */
 
-    function mobileLayoutBannerAdvert(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
+    function T982MobileLayoutBannerAdvert(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
         $search->search();
         $search->searchWrong('Exclusive rear-roller');
         $I->mobileLayoutBannerAdvert();

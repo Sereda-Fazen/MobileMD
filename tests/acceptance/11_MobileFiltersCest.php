@@ -7,7 +7,7 @@ class MobileFiltersCest
 {
 
 
-    function T965TestACheckboxFilter(Step\Acceptance\FiltersSteps $I, \Page\MobileFilters $filtersMowDirect) {
+    function T992MobileCheckboxFilter(Step\Acceptance\FiltersSteps $I, \Page\MobileFilters $filtersMowDirect) {
         $filtersMowDirect->filtersCheckbox();
         $I->checkFilters();
     }

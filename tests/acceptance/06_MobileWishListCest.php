@@ -7,7 +7,7 @@ use \Step\Acceptance;
 class MobileWishListCest
 {
 
-    function mobileWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList)
+    function T994T999MobileWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList)
     {
         $I->loginSuccess('mowdirect@gmail.com', '123456');
         $myWishList->wishList();
@@ -17,7 +17,7 @@ class MobileWishListCest
 
     }
 
-    function mobileAddItemsFromWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList) {
+    function T994MobileAddItemsFromWishlist(Step\Acceptance\LoginSteps $I, \Page\MyWishList $myWishList) {
         $I->loginSuccess('mowdirect@gmail.com', '123456');
         $myWishList->addItemsInWishlist();
     }

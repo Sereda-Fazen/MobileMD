@@ -11,7 +11,7 @@ class MobileShoppingCartCest
         $checkout->checkSugePurchase('mowdirect@gmail.com','123456');
     }
     
-    function T960MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
+    function T1027MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
         $shoppingCartMowDirect->payPalCheckout();
     }
