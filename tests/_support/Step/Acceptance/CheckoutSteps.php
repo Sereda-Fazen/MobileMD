@@ -87,9 +87,13 @@ class CheckoutSteps extends \AcceptanceTester
         $brands = count($I->grabMultiple('//*[@id="md-brand-list"]/li'));
 
             $I->wait(2);
-            $I->click('//*[@id="md-brand-list"]/li[' . rand(1, $brands) . ']/a');
+            $I->waitForElement('//*[@id="md-brand-list"]/li');
+            $I->scrollDown(100);
+            $I->click('//*[@id="md-brand-list"]/li['.rand(1,$brands).']/a');
             $I->waitForElement('//*[@class="mdgo-page-title main-container"]/h1');
-            $I->click('//div[@class="category-collateral"]/div');
+            $I->click('//div[@class="category-collateral"]/div['.$b.']');
+            try {$I->waitForElement('//*[@class="category-collateral"]/div['.$b.']/div');
+                $I->click('//*[@class="category-collateral"]//div/div');} catch (Exception $e){}
 
             $I->scrollDown(200);
             try {
