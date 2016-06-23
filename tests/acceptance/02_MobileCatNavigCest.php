@@ -21,7 +21,7 @@ class MobileCategoryNavigationCest
         $I->amountTopCategories10();
     }
 
-    function T1025CategoryNavigationSaleDepartment(Page\CategoryNavigation $category, \Step\Acceptance\ProductsSteps $I) {
+    function T1025CategoryDepartment(Page\CategoryNavigation $category, \Step\Acceptance\ProductsSteps $I) {
         $category->home();
         $category->checkTop25();
         $I->amountTopCategories25();
