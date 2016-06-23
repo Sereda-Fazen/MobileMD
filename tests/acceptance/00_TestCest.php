@@ -7,8 +7,8 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T1021MobileProductsSameSupplie(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage){
-        $I->mobileSelectBrand('2');
+    function T1017MobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
+        $I->mobileSellTractor();
         $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 

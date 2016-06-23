@@ -45,6 +45,13 @@ class Checkout
 
     public static $sugePurchase = '//*[@id="co-payment-form"]//dl/dt[1]/input';
 
+    //suge switch on admin panel
+
+    public static $inputNameCard = '//ul[@class="form-list paymentsage"]//li//input';
+    public static $typeCreditCard = '//ul[@class="form-list paymentsage"]//li[2]//select';
+    public static $cardNumber = '//ul[@class="form-list paymentsage"]//li[3]/div/input';
+    public static $verificationNum = '//ul[@class="form-list paymentsage"]//li[5]/div//input';
+
     //order
 
     public static $showOrder = '//li[@id="opc-review"]';
@@ -139,9 +146,16 @@ class Checkout
     {
         $I = $this->tester;
         self::checkOrder($name, $password);
+        $I->scrollTo('div.md-our-proposition',300);
         $I->waitForElement(self::$bankTransfer);
         $I->click(self::$bankTransfer);
         $I->click(self::$continue4);
+        try{
+            $I->scrollTo('div.md-our-proposition',300);
+            $I->click(self::$continue4);
+            $I->scrollTo(self::$continue4,100);
+            $I->click(self::$continue4);
+        }catch (Exception $e){}
 
         $I->waitForElement(self::$showOrder);
         $I->waitForText('Order Review');
@@ -156,6 +170,7 @@ class Checkout
 
         $I->waitForElement(self::$agree);
         $I->wait(2);
+        $I->scrollTo('div.md-our-proposition',300);
         try {$I->waitForElement('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
         $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');} catch (Exception $e) {}
         $I->click(self::$agree);
@@ -191,7 +206,7 @@ class Checkout
 
     }
 
-    public function checkSugePurchase($name, $password)
+    public function checkSugePurchase($name, $password, $card, $numCard, $verNum)
     {
         $I = $this->tester;
         self::checkOrder($name, $password);
@@ -199,6 +214,21 @@ class Checkout
         $I->click(self::$sugePurchase);
         $I->wait(2);
         $I->click(self::$continue4);
+
+        try {
+            $I->scrollTo('div.md-our-proposition',300);
+            $I->click(self::$continue4);
+            $I->scrollTo(self::$continue4,100);
+            $I->click(self::$continue4);
+            $I->getVisibleText('This is a required field.');
+            $I->getVisibleText('Card type doesn\'t match credit card number');
+            $I->fillField(self::$inputNameCard, 'Test');
+            $I->selectOption(self::$typeCreditCard, $card);
+            $I->fillField(self::$cardNumber, $numCard);
+            $I->fillField(self::$verificationNum, $verNum);
+            $I->scrollTo('div.md-our-proposition',300);
+            $I->click(self::$continue4);
+        } catch (Exception $e){}
 
         $I->waitForElement(self::$showOrder);
         $I->waitForText('Order Review');
@@ -209,8 +239,11 @@ class Checkout
         $I->getVisibleText('DELIVERY METHOD');
         $I->getVisibleText('PAYMENT METHOD');
         $I->getVisibleText('Cheque or Bank Transfer');
+
         $I->waitForElement(self::$productTable);
+
         $I->wait(2);
+        $I->scrollTo('div.md-our-proposition',300);
         $I->waitForElement(self::$agree);
         $I->click(self::$agree);
 

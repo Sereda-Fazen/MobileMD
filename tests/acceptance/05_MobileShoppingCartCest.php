@@ -8,7 +8,7 @@ class MobileShoppingCartCest
 
     function T1026MobilePaySugePurchase(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkout) {
         $I->mobileSellTractor();
-        $checkout->checkSugePurchase('mowdirect@gmail.com','123456');
+        $checkout->checkSugePurchase('mowdirect@gmail.com','123456', 'American Express', '378282246310005','1234');
     }
     
     function T1027MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {

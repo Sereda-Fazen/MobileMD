@@ -126,6 +126,7 @@ class MyAccountMowDirect
         $I->fillField(self::$titleField,$title);
         $I->fillField(self::$firstNameField,$firstName);
         $I->fillField(self::$lastNameField,$lastName);
+        $I->waitForElement(self::$saveButton);
         $I->click(self::$saveButton);
         $I->waitForElement(self::$assertSaveOk);
         $I->see('The account information has been saved.',self::$assertSaveOk);
@@ -199,6 +200,7 @@ class MyAccountMowDirect
         $I->waitForElement(self::$defaultBillingAddressCheckbox);
         $I->click(self::$defaultBillingAddressCheckbox);
         $I->click(self::$defaultShippingAddressCheckbox);
+        $I->waitForElement(self::$saveButton);
         $I->click(self::$saveButton);
         $I->waitForElement(self::$assertSaveOk);
         $I->see("The address has been saved.", self::$assertSaveOk);
