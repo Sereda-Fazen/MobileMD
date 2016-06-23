@@ -7,9 +7,9 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function myInvitations(Step\Acceptance\LoginSteps $I, \Page\MyAccountMowDirect $accountMowDirect){
-        $I->loginSuccess('mowdirect@gmail.com', '123456');
-        $accountMowDirect->myInvitationsCheck('test@1.com');
+    function T1021MobileProductsSameSupplie(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage){
+        $I->mobileSelectBrand('2');
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
 

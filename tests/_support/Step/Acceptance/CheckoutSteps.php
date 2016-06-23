@@ -86,7 +86,7 @@ class CheckoutSteps extends \AcceptanceTester
         $I->click('//*[@id="brandsViewAll"]');
         $brands = count($I->grabMultiple('//*[@id="md-brand-list"]/li'));
 
-            $I->waitForElement('//*[@id="md-brand-list"]/li[' . rand(1, $brands) . ']/a');
+            $I->wait(2);
             $I->click('//*[@id="md-brand-list"]/li[' . rand(1, $brands) . ']/a');
             $I->waitForElement('//*[@class="mdgo-page-title main-container"]/h1');
             $I->click('//div[@class="category-collateral"]/div');
