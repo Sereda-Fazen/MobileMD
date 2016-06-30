@@ -7,9 +7,9 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T1017MobileTractorSale(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
+    function T1267MobilePayPalCreditCheckout(Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage) {
         $I->mobileSellTractor();
-        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
+        $checkoutPage->checkPayPalCredit('mowdirect@gmail.com','123456');
     }
 
 

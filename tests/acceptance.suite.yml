@@ -24,32 +24,43 @@ env:
               url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
               restart: false
               browser: chrome
-              window_size: 768x1024
+              #window_size: 768x1024
 
 
 
-   MOBILE:
+   MOBILE_CROSSTESTING:
      modules:
       config:
           WebDriver:
-              url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
-              restart: false
-  # --run in browserstack--
+            host: "hub.crossbrowsertesting.com"
+            browser: chrome
+            #window_size: 1980x1080
+            url: "http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/"
+            port: 80
+            capabilities:
+              username: "sereda.alex.qa%40gmail.com"
+              password: "u0524708b49ddc3e"
+              browser_api_name: "MblChrome35"
+              os_api_name: "GalaxyS5-And44"
+              screen_resolution: "1080x1920"
+              record_video: "true"
+
+   MOBILE_B:
+      modules:
+        config:
+           WebDriver:
               host: 'hub.browserstack.com'
               port: 80
-              browserName: 'android'
-              browser: 'Android'
-              restart: false
-              platform: ANDROID
-  # -- login in browserstack
+              browser: android
               capabilities:
                browserstack.user: 'cadencewatch1'
                browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+
+               platform: 'ANDROID'
+               device: 'Google Nexus 5'
                browserstack.debug: 'true'
                unexpectedAlertBehaviour: 'accept'
                pageLoadStrategy: 'eager'
-               autoAcceptAlerts:  'true'
-               autoDismissAlerts:  'true'
 
 
 
