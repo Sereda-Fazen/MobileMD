@@ -204,8 +204,7 @@ class MyAccountMowDirect
         $I->click(self::$saveButton);
         $I->waitForElement(self::$assertSaveOk);
         $I->see("The address has been saved.", self::$assertSaveOk);
-        $I->click(self::$deleteAddress);
-        $I->acceptPopup();
+       
         return $this;
     }
 
