@@ -48,7 +48,6 @@ class Login
         $I->fillField(self::$email, $name);
         $I->fillField(self::$pass, $password);
         $I->click(self::$submit);
-
         return $this;
     }
 

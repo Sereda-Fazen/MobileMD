@@ -29,7 +29,7 @@ class Checkout
 
 
     public static $showMethod = '//li[@id="opc-shipping_method"]';
-    public static $continue3 = '//li[@id="opc-shipping_method"]//button';
+    public static $continue3 = '//*[@id="checkout-step-shipping_method"]//button//span[text()="Continue"]';
 
     //payment info
 
@@ -131,8 +131,8 @@ class Checkout
 
         $I->waitForElement(self::$showMethod);
         $I->waitForText('Delivery Method');
+        $I->waitForElementVisible(self::$continue3);
         $I->waitForElement(self::$continue3);
-        $I->wait(2);
         $I->click(self::$continue3);
 
         $I->waitForElement(self::$showPayment);
@@ -149,6 +149,7 @@ class Checkout
         $I->scrollTo('div.md-our-proposition',300);
         $I->waitForElement(self::$bankTransfer);
         $I->click(self::$bankTransfer);
+        $I->waitForElement(self::$continue4);
         $I->click(self::$continue4);
         try{
             $I->scrollTo('div.md-our-proposition',300);
@@ -171,9 +172,13 @@ class Checkout
         $I->waitForElement(self::$agree);
         $I->wait(2);
         $I->scrollTo('div.md-our-proposition',300);
-        try {$I->waitForElement('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
-        $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');} catch (Exception $e) {}
-        $I->click(self::$agree);
+        $accessories = $I->grabTextFrom('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+        if ($accessories == false) {
+            $I->waitForElement(self::$agree);
+            $I->click(self::$agree);
+        } else {
+            $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+        }
         $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
 

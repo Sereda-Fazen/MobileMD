@@ -34,8 +34,8 @@ class MobileFilters
     public function filtersCheckbox() {
 
         $I = $this->tester;
-        $I->amOnPage(self::$URL);
-        //$I->amOnUrl('http://www.mowdirect.co.uk/');
+        //$I->amOnPage(self::$URL);
+        $I->amOnUrl('http://www.mowdirect.co.uk/');
         $I->waitForElement(self::$lawnTractorsLocator);
         $I->click(self::$lawnTractorsLocator);
         $I->waitForElement(self::$clickTractors);
