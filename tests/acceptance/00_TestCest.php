@@ -11,6 +11,7 @@ class TestCest
     {
         $I->amOnPage('/');
         $I->waitForElement('.skip-lis');
+        $I->screen();
     }
 
 
