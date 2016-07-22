@@ -7,10 +7,11 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T1020MobileTractorOptional(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage)
+    function T1020MobileTractorOptional(\Step\Acceptance\CheckoutSteps $I)
     {
-        $I->optional();
-        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
+        $I->amOnPage('/');
+        $I->waitForElement('.skip-links');
+        $I->makeScreenshot('home');
     }
 
 
