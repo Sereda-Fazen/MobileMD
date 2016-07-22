@@ -172,13 +172,12 @@ class Checkout
         $I->waitForElement(self::$agree);
         $I->wait(2);
         $I->scrollTo('div.md-our-proposition',300);
-        $accessories = $I->grabTextFrom('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
-        if ($accessories == false) {
-            $I->waitForElement(self::$agree);
-            $I->click(self::$agree);
-        } else {
-            $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
-        }
+
+        $I->waitForElement(self::$agree);
+        $I->click(self::$agree);
+
+        $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+
         $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
 

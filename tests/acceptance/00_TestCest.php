@@ -7,11 +7,10 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T985SearchTops10(Page\Search $search, \AcceptanceTester $I) {
-        $search->search();
-        $search->searchWrong('Top10');
-        $I->seeElement('//a[@class="gs-title"]/b[text()="Top 10"]');
-
+    function T1020MobileTractorOptional(\Step\Acceptance\CheckoutSteps $I, \Page\Checkout $checkoutPage)
+    {
+        $I->optional();
+        $checkoutPage->mobilePayment('mowdirect@gmail.com','123456');
     }
 
 
