@@ -10,8 +10,7 @@ class TestCest
     function T1020MobileTractorOptional(\Step\Acceptance\CheckoutSteps $I)
     {
         $I->amOnPage('/');
-        $I->waitForElement('.skip-links');
-        $I->makeScreenshot('home');
+        $I->waitForElement('.skip-lis');
     }
 
 
