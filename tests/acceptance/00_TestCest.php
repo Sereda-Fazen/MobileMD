@@ -7,11 +7,11 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T985SearchTops10(Page\Search $search, \AcceptanceTester $I) {
-        $search->search();
-        $search->searchWrong('Top10');
-        $I->seeElement('//a[@class="gs-title"]/b[text()="Top 10"]');
-
+    function T1020MobileTractorOptional(\Step\Acceptance\CheckoutSteps $I)
+    {
+        $I->amOnPage('/');
+        $I->waitForElement('.skip-lis');
+        $I->screen();
     }
 
 

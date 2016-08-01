@@ -172,13 +172,10 @@ class Checkout
         $I->waitForElement(self::$agree);
         $I->wait(2);
         $I->scrollTo('div.md-our-proposition',300);
-        $accessories = $I->grabTextFrom('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
-        if ($accessories == false) {
-            $I->waitForElement(self::$agree);
-            $I->click(self::$agree);
-        } else {
-            $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
-        }
+
+        $I->waitForElement(self::$agree);
+        $I->click(self::$agree);
+
         $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
 
@@ -191,6 +188,57 @@ class Checkout
 
 
     }
+
+    public function mobilePaymentAccessories($name, $password)
+    {
+        $I = $this->tester;
+        self::checkOrder($name, $password);
+        $I->scrollTo('div.md-our-proposition',300);
+        $I->waitForElement(self::$bankTransfer);
+        $I->click(self::$bankTransfer);
+        $I->waitForElement(self::$continue4);
+        $I->click(self::$continue4);
+        try{
+            $I->scrollTo('div.md-our-proposition',300);
+            $I->click(self::$continue4);
+            $I->scrollTo(self::$continue4,100);
+            $I->click(self::$continue4);
+        }catch (Exception $e){}
+
+        $I->waitForElement(self::$showOrder);
+        $I->waitForText('Order Review');
+        $I->waitForElement(self::$yourOrder);
+        $I->getVisibleText('YOUR SELECTION');
+        $I->getVisibleText('INVOICE ADDRESS');
+        $I->getVisibleText('DELIVERY ADDRESS');
+        $I->getVisibleText('DELIVERY METHOD');
+        $I->getVisibleText('PAYMENT METHOD');
+        $I->getVisibleText('Cheque or Bank Transfer');
+        $I->waitForElement(self::$productTable);
+
+        $I->waitForElement(self::$agree);
+        $I->wait(2);
+        $I->scrollTo('div.md-our-proposition',300);
+
+        $I->waitForElement(self::$agree);
+        $I->click(self::$agree);
+        $I->waitForElement('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+        $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+
+        $I->scrollDown(200);
+        $I->waitForElementVisible(self::$continue5);
+
+        $I->click(self::$continue5);
+        $I->waitForText('Your order has been received.',30);
+        $I->see('Your order has been received.',self::$seeOrder);
+        $I->getVisibleText('Thank you for your purchase!');
+        $I->click(self::$keepContinue);
+        $I->waitForElement(self::$mainPage);
+
+
+    }
+
+
 
 
     public function checkPayPalCredit($name, $password)
