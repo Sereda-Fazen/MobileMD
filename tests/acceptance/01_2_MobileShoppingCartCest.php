@@ -14,8 +14,7 @@ class MobileShoppingCartCest
 /*
     function T1027MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
-        $shoppingCartMowDirect->payPalCheckout();
-    }
+        $shoppingCartMowDirect->payPalCheckout();    }
 */
     function T1266MobilePayPalCredit(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
