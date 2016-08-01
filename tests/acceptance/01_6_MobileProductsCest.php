@@ -25,7 +25,7 @@ class MobileProductsCest
      * @param \Page\Search $search
     T_934_View a Product layout with custom options
      */
-
+/*
     function T981MobileLayoutCustomOptions(\Step\Acceptance\ProductsSteps $I, \Page\Search $search){
         $search->search();
         $search->searchWrong('optional accessories');
