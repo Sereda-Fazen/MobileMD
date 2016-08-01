@@ -10,12 +10,13 @@ class MobileShoppingCartCest
         $I->mobileSellTractor();
         $checkout->checkSugePurchase('mowdirect@gmail.com','123456', 'American Express', '378282246310005','1234');
     }
-    
+
+/*
     function T1027MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
         $shoppingCartMowDirect->payPalCheckout();
     }
-
+*/
     function T1266MobilePayPalCredit(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
         $I->mobileSellTractor();
         $shoppingCartMowDirect->payPalCredit();
