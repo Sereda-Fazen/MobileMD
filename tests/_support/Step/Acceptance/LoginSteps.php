@@ -58,7 +58,7 @@ class LoginSteps extends \AcceptanceTester
             $I->click('//div[@class="buttons-set"]//button/span');
             $I->waitForElement('p.hello > strong');
             $I->see('Hello    Test Test1 Test2', 'p.hello > strong');
-        
+
     }
 
     public function cycleRate ()
