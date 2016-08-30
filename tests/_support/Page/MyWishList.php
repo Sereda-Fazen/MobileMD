@@ -67,13 +67,11 @@ class MyWishList
 
     public function wishList(){
         $I = $this->tester;
-        $I->waitForElement(self::$clickAccount);
-        $I->click(self::$clickAccount);
+        $I->waitAndClick(self::$clickAccount);
         $I->waitForElement(self::$accountMenu);
         $I->wait(2);
         $I->click(self::$accountMenu);
-        $I->waitForElement(self::$myWishlist);
-        $I->click(self::$myWishlist);
+        $I->waitAndClick(self::$myWishlist);
         $I->waitForElement(self::$seeEmptyList);
         $I->see('You have no items in your wishlist.',self::$seeEmptyList);
 
@@ -84,12 +82,10 @@ class MyWishList
         $I = $this->tester;
         $I->amOnPage(self::$url);
         $I->scrollDown(300);
-        $I->waitForElement(self::$ourTops);
-        $I->click(self::$ourTops);
+        $I->waitAndClick(self::$ourTops);
         $I->waitForElement(self::$catProd);
         $I->click(self::$clickProd);
-        $I->waitForElement(self::$seeAddToWishList);
-        $I->click(self::$seeAddToWishList);
+        $I->waitAndClick(self::$seeAddToWishList);
         $I->getVisibleText('My Wishlist');
         $I->waitForElement(self::$successMsg);
 
@@ -116,8 +112,7 @@ class MyWishList
 
     public function addShare(){
         $I = $this->tester;
-        $I->waitForElement(self::$clickShare);
-        $I->click(self::$clickShare);
+        $I->waitAndClick(self::$clickShare);
         $I->waitForText('Share Your Wishlist');
         $I->click(self::$shareWishlist);
         $I->getVisibleText('This is a required field.');
@@ -134,8 +129,7 @@ class MyWishList
     public function removeItem(){
         $I = $this->tester;
         $I->amOnUrl(self::$urlWishlist);
-        $I->waitForElement(self::$clickRemoveFirst);
-        $I->click(self::$clickRemoveFirst);
+        $I->waitAndClick(self::$clickRemoveFirst);
         $I->acceptPopup();
         $I->waitForElement(self::$seeEmptyList);
         $I->see('You have no items in your wishlist.',self::$seeEmptyList);
@@ -144,26 +138,21 @@ class MyWishList
     public function addItemsInWishlist(){
         $I = $this->tester;
 
-        $I->waitForElement(self::$clickAccount);
-        $I->click(self::$clickAccount);
+        $I->waitAndClick(self::$clickAccount);
         $I->waitForElement(self::$accountMenu);
         $I->wait(2);
         $I->click(self::$accountMenu);
-        $I->waitForElement(self::$myWishlist);
-        $I->click(self::$myWishlist);
+        $I->waitAndClick(self::$myWishlist);
 
-        $I->waitForElement(self::$addBasket);
-        $I->click(self::$addBasket);
+        $I->waitAndClick(self::$addBasket);
         $I->waitForElement(self::$successMsg);
         $I->seeElement(self::$successMsg);
 
         $I->click(self::$cart);
         try{
-        $I->waitForElement(self::$removeItem);
-        $I->click(self::$removeItem);}
+        $I->waitAndClick(self::$removeItem);}
         catch (Exception $e) {
-            $I->waitForElement(self::$removeItem2);
-            $I->click(self::$removeItem2);
+            $I->waitAndClick(self::$removeItem2);
         }
         $I->waitForText('Your Basket is empty...');
 

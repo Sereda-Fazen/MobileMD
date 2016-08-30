@@ -11,20 +11,14 @@ class ProductsSteps extends \AcceptanceTester
     public function productsLayout(){
         $I = $this;
         $I->amOnPage('/');
-        $I->waitForElement('//div[@class="skip-links"]//a[1]');
-        $I->click('//div[@class="skip-links"]//a[1]');
-        $I->waitForElement('//*[@id="menu-mobile-2430"]/div[1]/span');
-        $I->click('//*[@id="menu-mobile-2430"]/div[1]/span');
-        $I->waitForElement('//*[@rel="submenu-mobile-2505"]');
-        $I->click('//*[@rel="submenu-mobile-2505"]');
+        $I->waitAndClick('//div[@class="skip-links"]//a[1]');
+        $I->waitAndClick('//*[@id="menu-mobile-2430"]/div[1]/span');
+        $I->waitAndClick('//*[@rel="submenu-mobile-2505"]');
 
-        $I->waitForElement('//*[@id="submenu-mobile-2505"]/div[1]//span[text()="Trailers for Ride-On Mowers / Garden Tractors"]');
-        $I->click('//*[@id="submenu-mobile-2505"]/div[1]//span[text()="Trailers for Ride-On Mowers / Garden Tractors"]');
-        $I->waitForElement('//*[@class="item odd"]//a/img');
-        $I->click('//*[@class="item odd"]//a/img');
+        $I->waitAndClick('//*[@id="submenu-mobile-2505"]/div[1]//span[text()="Trailers for Ride-On Mowers / Garden Tractors"]');
+        $I->waitAndClick('//*[@class="item odd"]//a/img');
         $I->scrollDown(200);
-        $I->waitForElement('//*[@id="collateral-tabs"]/dt[3]');
-        $I->click('//*[@id="collateral-tabs"]/dt[3]');
+        $I->waitAndClick('//*[@id="collateral-tabs"]/dt[3]');
         $I->waitForElement('//*[@class="tab-container current"]');
         $I->click('//*[@id="collateral-tabs"]/dt[4]/span[text()="Reviews"]');
         $I->waitForElement('//*[@id="customer-reviews"]');
@@ -35,8 +29,7 @@ class ProductsSteps extends \AcceptanceTester
 
     public function mobileProductsLayoutCustomOptions(){
         $I = $this;
-        $I->waitForElement('//div[@class="gsc-results gsc-webResult"]//a');
-        $I->click('//div[@class="gsc-results gsc-webResult"]//a');
+        $I->waitAndClick('//div[@class="gsc-results gsc-webResult"]//a');
         $I->waitForElement('//div[@class="category-products"]');
         $I->click('//*[@class="products-list"]/li//a');
         $I->waitForElement('//*[@id="product-collateral-id"]');
@@ -92,10 +85,8 @@ class ProductsSteps extends \AcceptanceTester
 
     public function mobileLayoutBannerAdvert(){
         $I = $this;
-        $I->waitForElement('//div[@class="gsc-results gsc-webResult"]//a');
-        $I->click('//div[@class="gsc-results gsc-webResult"]//a');
-        $I->waitForElement('//*[@class="lead-article pod"]//div[2]//figcaption/a');
-        $I->click('//*[@class="lead-article pod"]//div[2]//figcaption/a');
+        $I->waitAndClick('//div[@class="gsc-results gsc-webResult"]//a');
+        $I->waitAndClick('//*[@class="lead-article pod"]//div[2]//figcaption/a');
         $I->waitForElement('//div[@class="widget widget-banner"]/ul/li/img');
         $I->getVisibleText('New and Exclusive');
     }

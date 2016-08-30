@@ -11,10 +11,7 @@ class FiltersSteps extends \AcceptanceTester
      */
     public function exceptions(){
         $I = $this;
-        $I->seeElement('//ol[@class="products-list"]/li');
-        try {$I->seeElement('//ol[@class="products-list"]/li[2]');} catch (Exception $e){}
-        try {$I->seeElement('//ol[@class="products-list"]/li[3]');} catch (Exception $e){}
-
+        $I->seeElement('.products-list');
     }
     public function removeFilter(){
         $I = $this;
@@ -26,9 +23,8 @@ class FiltersSteps extends \AcceptanceTester
     public function checkFilters()
     {
         $I = $this;
-        $I->waitForElement('//*[@class="mb-mana-catalog-leftnav"]');
-        $I->click('//*[@class="mb-mana-catalog-leftnav"]');
-        $I->waitForElement('//dl[@class="narrow-by-list"]');
+        $I->waitAndClick('.mb-mana-catalog-leftnav');
+        $I->waitForElement('.narrow-by-list');
 
 
         for ($t = 2; $t <= 11; $t++) {

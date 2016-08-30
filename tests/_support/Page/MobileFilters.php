@@ -36,13 +36,9 @@ class MobileFilters
         $I = $this->tester;
         //$I->amOnPage(self::$URL);
         $I->amOnUrl('http://www.mowdirect.co.uk/');
-        $I->waitForElement(self::$lawnTractorsLocator);
-        $I->click(self::$lawnTractorsLocator);
-        $I->waitForElement(self::$clickTractors);
-        $I->click(self::$clickTractors);
-
-        $I->waitForElement(self::$heavyDutyTractors);
-        $I->click(self::$heavyDutyTractors);
+        $I->waitAndClick(self::$lawnTractorsLocator);
+        $I->waitAndClick(self::$clickTractors);
+        $I->waitAndClick(self::$heavyDutyTractors);
         $I->waitForElement(self::$assertHeavyDutyTractors);
         $I->see('Heavy-Duty Garden Tractors',self::$assertHeavyDutyTractors);
 

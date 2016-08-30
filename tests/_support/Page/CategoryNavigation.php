@@ -45,12 +45,9 @@ class CategoryNavigation
     public function checkTop10()
     {
         $I = $this->tester;
-        $I->waitForElement(self::$waitDeals);
-        $I->click(self::$waitDeals);
-        $I->waitForElement(self::$moveDeals);
-        $I->click(self::$moveDeals);
-        $I->waitForElement(self::$top10);
-        $I->click(self::$top10);
+        $I->waitAndClick(self::$waitDeals);
+        $I->waitAndClick(self::$moveDeals);
+        $I->waitAndClick(self::$top10);
         $I->waitForElement(self::$category);
         $I->waitForElement(self::$amount);
 
@@ -59,19 +56,14 @@ class CategoryNavigation
     public function checkTop25()
     {
         $I = $this->tester;
-        $I->waitForElement(self::$waitDeals);
-        $I->click(self::$waitDeals);
-        $I->waitForElement(self::$moveDeals);
-        $I->click(self::$moveDeals);
-        $I->waitForElement(self::$top25);
-        $I->click(self::$top25);
+        $I->waitAndClick(self::$waitDeals);
+        $I->waitAndClick(self::$moveDeals);
+        $I->waitAndClick(self::$top25);
         $I->waitForElement(self::$category);
 
         //$I->amOnUrl('http://testupgrade.ee12test.mowdirect.co.uk/sale-begins-now/ride-on-mowers-only/show/25');
         $I->click(self::$click25);
-        $I->waitForElement(self::$select25);
-        $I->click(self::$select25);
-
+        $I->waitAndClick(self::$select25);
         $I->waitForElement(self::$amount25);
 
     }

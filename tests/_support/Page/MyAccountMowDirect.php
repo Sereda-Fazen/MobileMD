@@ -108,8 +108,7 @@ class MyAccountMowDirect
 
     public function navigateToAccount(){
         $I = $this->tester;
-        $I->waitForElement(self::$accountInformation);
-        $I->click(self::$accountInformation);
+        $I->waitAndClick(self::$accountInformation);
         $I->waitForElementVisible(self::$leftBlock);
         $I->wait(2);
         $I->click(self::$myAccount);
@@ -120,14 +119,12 @@ class MyAccountMowDirect
     {
         $I= $this ->tester;
         self::navigateToAccount();
-        $I->waitForElement(self::$information);
-        $I->click(self::$information);
+        $I->waitAndClick(self::$information);
         $I->see('Edit Account Information',self::$assertAccountPage);
         $I->fillField(self::$titleField,$title);
         $I->fillField(self::$firstNameField,$firstName);
         $I->fillField(self::$lastNameField,$lastName);
-        $I->waitForElement(self::$saveButton);
-        $I->click(self::$saveButton);
+        $I->waitAndClick(self::$saveButton);
         $I->waitForElement(self::$assertSaveOk);
         $I->see('The account information has been saved.',self::$assertSaveOk);
         return $this;
@@ -138,8 +135,7 @@ class MyAccountMowDirect
         $I= $this ->tester;
 
         self::navigateToAccount();
-        $I->waitForElement(self::$addressBilling);
-        $I->click(self::$addressBilling);
+        $I->waitAndClick(self::$addressBilling);
 
         $I->see('Address Book',self::$assertAddressPage);
         $I->click(self::$defaultAddressEdit);
@@ -151,8 +147,7 @@ class MyAccountMowDirect
         $I->fillField(self::$townCity,$city);
         $I->click(self::$regionManitobe);
         $I->fillField(self::$postcodeField,$postcode);
-        $I->waitForElement(self::$saveDefaultAddressButton);
-        $I->click(self::$saveDefaultAddressButton);
+        $I->waitAndClick(self::$saveDefaultAddressButton);
         $I->waitForElement(self::$assertSaveOk);
         $I->see("The address has been saved.", self::$assertSaveOk);
         return $this;
@@ -200,8 +195,7 @@ class MyAccountMowDirect
         $I->waitForElement(self::$defaultBillingAddressCheckbox);
         $I->click(self::$defaultBillingAddressCheckbox);
         $I->click(self::$defaultShippingAddressCheckbox);
-        $I->waitForElement(self::$saveButton);
-        $I->click(self::$saveButton);
+        $I->waitAndClick(self::$saveButton);
         $I->waitForElement(self::$assertSaveOk);
         $I->see("The address has been saved.", self::$assertSaveOk);
        

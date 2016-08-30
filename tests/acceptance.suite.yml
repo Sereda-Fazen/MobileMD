@@ -18,14 +18,14 @@ env:
    DESKTOP:
 
 
-   TABLET_CUSTOM:
+   TABLET:
      modules:
       config:
           WebDriver:
               url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
               restart: false
               browser: chrome
-              #window_size: 768x1024
+              window_size: 768x1024
 
 
 
