@@ -95,6 +95,14 @@ public function screen()
     $wb->_saveScreenshot(codecept_output_dir() . 'screenshot_2.png');
 }
 
+    public function waitAndClick($locator){
+        $wait = $this->getModule('WebDriver');
+        $wait->waitForElement($locator);
+        $wait->click($locator);
+
+
+    }
+
 
 
 }

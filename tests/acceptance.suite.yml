@@ -25,7 +25,7 @@ env:
               url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
               restart: false
               browser: chrome
-              window_size: 768x1024
+              #window_size: 768x1024
 
 
 
@@ -62,6 +62,23 @@ env:
                browserstack.debug: 'true'
                unexpectedAlertBehaviour: 'accept'
                pageLoadStrategy: 'eager'
+
+   LABS:
+      modules:
+        config:
+           WebDriver:
+             url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk'
+             host: 'obana:a0752bc8-c4db-443e-bacf-aa998fcb767c@ondemand.saucelabs.com'
+             port: 80
+             #browser: chrome
+             capabilities:
+               appiumVersion: '1.5.3'
+               deviceName: 'Samsung Galaxy S4 Emulator'
+               browserversions: '4.3'
+               deviceOrientation: 'portrait'
+               browser: 'Browser'
+               platformVersion: '4.4'
+               platformName: 'Android'
 
 
 

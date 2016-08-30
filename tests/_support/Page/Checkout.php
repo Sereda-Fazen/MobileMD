@@ -97,11 +97,9 @@ class Checkout
     {
         $I = $this->tester;
         try {
-            $I->waitForElement('//div[@id="cart_mobile"]//button');
-            $I->click('//div[@id="cart_mobile"]//button');
+            $I->waitAndClick('//div[@id="cart_mobile"]//button');
         } catch (Exception $e) {
-            $I->waitForElement('//div[@id="cart_mobile"]//button');
-            $I->click('//ul[@class="checkout-types top"]//button');
+            $I->waitAndClick('//ul[@class="checkout-types top"]//button');
         }
 
         try {
@@ -124,8 +122,7 @@ class Checkout
         $I->waitForElement(self::$useAddress);
         $I->scrollDown(200);
         try {
-            $I->waitForElement(self::$continue2);
-            $I->click(self::$continue2);
+            $I->waitAndClick(self::$continue2);
         } catch (Exception $e) {
         }
 
@@ -147,10 +144,8 @@ class Checkout
         $I = $this->tester;
         self::checkOrder($name, $password);
         $I->scrollTo('div.md-our-proposition',300);
-        $I->waitForElement(self::$bankTransfer);
-        $I->click(self::$bankTransfer);
-        $I->waitForElement(self::$continue4);
-        $I->click(self::$continue4);
+        $I->waitAndClick(self::$bankTransfer);
+        $I->waitAndClick(self::$continue4);
         try{
             $I->scrollTo('div.md-our-proposition',300);
             $I->click(self::$continue4);
@@ -173,8 +168,7 @@ class Checkout
         $I->wait(2);
         $I->scrollTo('div.md-our-proposition',300);
 
-        $I->waitForElement(self::$agree);
-        $I->click(self::$agree);
+        $I->waitAndClick(self::$agree);
 
         $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
@@ -220,10 +214,8 @@ class Checkout
         $I->wait(2);
         $I->scrollTo('div.md-our-proposition',300);
 
-        $I->waitForElement(self::$agree);
-        $I->click(self::$agree);
-        $I->waitForElement('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
-        $I->click('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
+        $I->waitAndClick(self::$agree);
+        $I->waitAndClick('//dl[@class="item-options"]/dt[text()="Optional Accessories:"]');
 
         $I->scrollDown(200);
         $I->waitForElementVisible(self::$continue5);
@@ -234,19 +226,13 @@ class Checkout
         $I->getVisibleText('Thank you for your purchase!');
         $I->click(self::$keepContinue);
         $I->waitForElement(self::$mainPage);
-
-
     }
-
-
-
 
     public function checkPayPalCredit($name, $password)
     {
         $I = $this->tester;
         self::checkOrder($name, $password);
-        $I->waitForElement(self::$payPalCredit);
-        $I->click(self::$payPalCredit);
+        $I->waitAndClick(self::$payPalCredit);
         $I->wait(2);
         $I->click(self::$continue4);
         try {
@@ -263,8 +249,7 @@ class Checkout
     {
         $I = $this->tester;
         self::checkOrder($name, $password);
-        $I->waitForElement(self::$sugePurchase);
-        $I->click(self::$sugePurchase);
+        $I->waitAndClick(self::$sugePurchase);
         $I->wait(2);
         $I->click(self::$continue4);
 
@@ -297,11 +282,9 @@ class Checkout
 
         $I->wait(2);
         $I->scrollTo('div.md-our-proposition',300);
-        $I->waitForElement(self::$agree);
-        $I->click(self::$agree);
+        $I->waitAndClick(self::$agree);
 
         $I->waitForElementVisible(self::$continue5);
-
         $I->click(self::$continue5);
 
         try {
