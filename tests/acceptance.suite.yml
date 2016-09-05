@@ -10,7 +10,7 @@ modules:
           url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
           restart: false
           browser: chrome
-          window_size: 360x640
+          window_size: 360x3100
 
 
 
@@ -25,7 +25,7 @@ env:
               url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
               restart: false
               browser: chrome
-              window_size: 768x1024
+              window_size: 768x3100
 
 
 
