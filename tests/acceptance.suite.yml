@@ -27,24 +27,22 @@ env:
               browser: chrome
               window_size: 768x4100
 
-
-
    MOBILE_CROSSTESTING:
-     modules:
-      config:
-          WebDriver:
-            host: "hub.crossbrowsertesting.com"
-            browser: chrome
-            #window_size: 1980x1080
-            url: "http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/"
-            #port: 80
-            capabilities:
-              username: "sereda.alex.qa%40gmail.com"
-              password: "u0524708b49ddc3e"
-              browser_api_name: "MblChrome35"
-              os_api_name: "GalaxyS5-And44"
-              screen_resolution: "1080x1920"
-              record_video: "true"
+      modules:
+       config:
+         WebDriver:
+           host: "hub.crossbrowsertesting.com"
+           browser: chrome
+           #window_size: 1980x1080
+           url: "http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/"
+           port: 80
+           capabilities:
+             username: "denimio_test%40yahoo.com"
+             password: "ub02ea3fa50b3df2"
+             browser_api_name: "MblChrome35"
+             os_api_name: "GalaxyS5-And44"
+             screen_resolution: "1080x1920"
+             record_video: "true"
 
    MOBILE_B:
       modules:
@@ -67,35 +65,18 @@ env:
       modules:
         config:
            WebDriver:
-             url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk'
-             host: 'obana:a0752bc8-c4db-443e-bacf-aa998fcb767c@ondemand.saucelabs.com'
+             url: 'http://mowdirect.co.uk'
+             host: 'seredaAlex:49c2e3d9-45b6-4926-9f52-fdd3c7303b39@ondemand.saucelabs.com'
              port: 80
-             #browser: chrome
+             browser: 'Browser'
              capabilities:
-               appiumVersion: '1.5.3'
-               deviceName: 'Samsung Galaxy S4 Emulator'
-               browserversions: '4.3'
-               deviceOrientation: 'portrait'
-               browser: 'Browser'
-               platformVersion: '4.4'
-               platformName: 'Android'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+               appiumVersion: "1.5.3"
+               deviceName: "Android Emulator"
+               deviceType: "phone"
+               deviceOrientation: "portrait"
+               browserName: "Browser"
+               platformVersion: "4.4"
+               platformName: "Android"
 
    TABLET:
      modules:
@@ -104,8 +85,8 @@ env:
               url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
               restart: false
   # --run in browserstack--
-              host: 'hub.browserstack.com'
-              port: 80
+              #host: 'hub.browserstack.com'
+              #port: 80
               browser: android
 
 
