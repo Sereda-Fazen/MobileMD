@@ -3,103 +3,77 @@ modules:
     enabled:
         - WebDriver
         - Helper\Acceptance
+        - Asserts
 
 
     config:
-      WebDriver:
-          url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
-          restart: false
-          browser: chrome
-          window_size: 360x4100
+        WebDriver:
+            url: 'http://www.mowdirect.co.uk/'
 
+            restart: false
+            browser: browser
+            #window_size: 360x640
+            #clear_cookies: false
+# --run in browserstack--
+            host: 'hub.browserstack.com'
+            port: 80
+# -- login in browserstack
+            capabilities:
+             browserstack.user: 'alex4556'
+             browserstack.key: 'w1447cpT1SQuyFthNZr3'
+             browserstack.debug: 'true'
+             unexpectedAlertBehaviour: 'accept'
+             acceptSslCert: 'true'
 
 
 env:
-   DESKTOP:
 
+  # for mobile testing
 
-   TABLET:
-     modules:
-      config:
-          WebDriver:
-              url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
-              restart: false
-              browser: chrome
-              window_size: 768x4100
-
-   MOBILE_CROSSTESTING:
-      modules:
-       config:
-         WebDriver:
-           host: "hub.crossbrowsertesting.com"
-           browser: chrome
-           #window_size: 1980x1080
-           url: "http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/"
-           port: 80
-           capabilities:
-             username: "denimio_test%40yahoo.com"
-             password: "ub02ea3fa50b3df2"
-             browser_api_name: "MblChrome35"
-             os_api_name: "GalaxyS5-And44"
-             screen_resolution: "1080x1920"
-             record_video: "true"
-
-   MOBILE_B:
+  samsung_galaxy_S5:
       modules:
         config:
            WebDriver:
-              host: 'hub.browserstack.com'
-              port: 80
               browser: android
               capabilities:
-               browserstack.user: 'cadencewatch1'
-               browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
+               platform: 'ANDROID'
+               device: 'Samsung Galaxy S5'
+               browserstack.debug: 'true'
+               unexpectedAlertBehaviour: 'accept'
+               pageLoadStrategy: 'eager'
 
+
+  google_nexus_5:
+      modules:
+        config:
+           WebDriver:
+              browser: android
+              capabilities:
                platform: 'ANDROID'
                device: 'Google Nexus 5'
                browserstack.debug: 'true'
                unexpectedAlertBehaviour: 'accept'
                pageLoadStrategy: 'eager'
 
-   LABS:
-      modules:
-        config:
-           WebDriver:
-             url: 'http://mowdirect.co.uk'
-             host: 'seredaAlex:49c2e3d9-45b6-4926-9f52-fdd3c7303b39@ondemand.saucelabs.com'
-             port: 80
-             browser: 'Browser'
-             capabilities:
-               appiumVersion: "1.5.3"
-               deviceName: "Android Emulator"
-               deviceType: "phone"
-               deviceOrientation: "portrait"
-               browserName: "Browser"
-               platformVersion: "4.4"
-               platformName: "Android"
-
-   TABLET:
-     modules:
-       config:
-          WebDriver:
-              url: 'http://testing:Da1mat1an5@testupgrade.ee12test.mowdirect.co.uk/'
-              restart: false
-  # --run in browserstack--
-              #host: 'hub.browserstack.com'
-              #port: 80
-              browser: android
+  htc_one_M8:
+        modules:
+          config:
+             WebDriver:
+                browser: android
+                capabilities:
+                 platform: 'ANDROID'
+                 device: 'HTC One M8'
+                 browserstack.debug: 'true'
+                 unexpectedAlertBehaviour: 'accept'
+                 pageLoadStrategy: 'eager'
 
 
-              #os: android
-  # -- login in browserstack
-              capabilities:
-               browserstack.user: 'cadencewatch1'
-               browserstack.key: 'RG12s8tJvQ9p3pZuxWzf'
 
-               platform: 'ANDROID'
-               device: 'Samsung Galaxy Tab 4 10.1'
-               browserstack.debug: 'true'
-               unexpectedAlertBehaviour: 'accept'
-               pageLoadStrategy: 'eager'
+
+
+
+
+
+
 
 

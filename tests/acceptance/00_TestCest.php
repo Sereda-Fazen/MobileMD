@@ -7,9 +7,11 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T1027MobilePayPalPurchase(Step\Acceptance\CheckoutSteps $I, \Page\ShoppingCart $shoppingCartMowDirect) {
-        $I->mobileSellTractor();
-        $shoppingCartMowDirect->payPalCheckout();    }
+    function T1359UseCategoryNavigationToNavigateToTheVariousSaleDepartments(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\ProductsSteps $I)
+    {
+        $categoryNavigation->home();
+        $categoryNavigation->saleDepartment();
+    }
     
 }
 

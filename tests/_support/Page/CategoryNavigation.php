@@ -5,25 +5,18 @@ namespace Page;
 class CategoryNavigation
 {
 
-    //Top 10
+    // T1400
 
-    public static $URL = '/';
-    public static $waitDeals = '//div[@class="skip-links"]//a[1]';
-    public static $moveDeals = '//*[@rel="submenu-mobile-3004"]';
-    public static $top10 = '//*[@id="submenu-mobile-3004"]/div[5]//span[text()="Top 10 Hedge Trimmer Deals"]';
-    public static $category = '//div[@class="category-products"]';
-    public static $amount = '//p[@class="amount amount--no-pages"]/strong[text()="10 Item(s)"]';
+    public static $lawnTractor = '//a[@href="/lawn-garden-tractors"]';
+    public static $waitTractorsPanel = '//div[@class="category-collateral lawn-garden-tractors"]';
 
-    // Top 25
+    // T1359
 
-    public static $top25 = '//*[@id="submenu-mobile-3004"]/div[2]//span[text()="Top 25 Ride-On Lawnmowers"]';
-    public static $click25 = '//div[@class="limiter"]/select';
-    public static $select25 = '//div[@class="limiter"]/select/option[5]';
-    public static $amount25 = '//p[@class="amount amount--no-pages"]/strong[text()="25 Item(s)"]';
-
-
-
-
+    public static $menu = '.skip-links>a';
+    public static $deals = '//*[@id="menu-content"]/div//a/span[text()="Deals"]';
+    public static $shopNow = '.curved.shadow.shop-now';
+    public static $bestDeals = 'ul > li:nth-of-type(2) > span > a';
+    public static $clearZone = '.floating-ticket>a';
 
     protected $tester;
 
@@ -37,40 +30,31 @@ class CategoryNavigation
     public function home()
     {
         $I = $this->tester;
-        $I->amOnPage(self::$URL);
-        //$I->amOnPage('/');
-
+        $I->amOnPage('/');
     }
 
-    public function checkTop10()
-    {
+    public function lawnTractor(){
         $I = $this->tester;
-        $I->waitAndClick(self::$waitDeals);
-        $I->waitAndClick(self::$moveDeals);
-        $I->waitAndClick(self::$top10);
-        $I->waitForElement(self::$category);
-        $I->waitForElement(self::$amount);
-
+        $I->waitAndClick(self::$lawnTractor);
+        $I->waitForElement(self::$waitTractorsPanel);
     }
 
-    public function checkTop25()
-    {
+    public function saleDepartment(){
         $I = $this->tester;
-        $I->waitAndClick(self::$waitDeals);
-        $I->waitAndClick(self::$moveDeals);
-        $I->waitAndClick(self::$top25);
-        $I->waitForElement(self::$category);
-
-        //$I->amOnUrl('http://testupgrade.ee12test.mowdirect.co.uk/sale-begins-now/ride-on-mowers-only/show/25');
-        $I->click(self::$click25);
-        $I->waitAndClick(self::$select25);
-        $I->waitForElement(self::$amount25);
-
+        $I->waitAndClick(self::$menu);
+        $I->waitAndClick(self::$deals);
+        $I->waitAndClick(self::$shopNow);
+       // $I->waitForElement(self::$bestDeals);
+      //  $I->waitForText('The Best Deals Around');
+       // $I->click(self::$bestDeals);
+        $I->see('Top Deals from MowDirect!', 'h1');
+        $I->seeInCurrentUrl('/sale-begins-now/top-deals-from-mowdirect');
+        $I->moveBack();
+        $I->seeInCurrentUrl('/sale-begins-now');
+        $I->waitAndClick(self::$clearZone);
+        $I->waitForText('The Clearance Zone');
+        $I->see('The Clearance Zone', 'h1');
+        $I->seeInCurrentUrl('/sale-begins-now/clearance-zone');
     }
-
-
-
-
-
 
 }
