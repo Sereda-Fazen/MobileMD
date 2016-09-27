@@ -13,12 +13,12 @@ modules:
             restart: false
             #browser: browser
             browser: chrome
-            window_size: 360x640
+            #window_size: 360x640
             #window_size: 768x1024
             #clear_cookies: false
 # --run in browserstack--
-            #host: 'hub.browserstack.com'
-            #port: 80
+            host: 'hub.browserstack.com'
+            port: 80
 # -- login in browserstack
             capabilities:
              browserstack.user: 'alex4556'

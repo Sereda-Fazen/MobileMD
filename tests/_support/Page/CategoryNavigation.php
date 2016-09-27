@@ -14,7 +14,7 @@ class CategoryNavigation
 
     public static $menu = '.skip-links>a';
     public static $deals = '//*[@id="menu-content"]/div//a/span[text()="Deals"]';
-    public static $shopNow = '.curved.shadow.shop-now';
+    public static $shopNow = '.full-range-name';
     public static $bestDeals = 'ul > li:nth-of-type(2) > span > a';
     public static $clearZone = '.floating-ticket>a';
 

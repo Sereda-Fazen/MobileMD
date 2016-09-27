@@ -10,9 +10,10 @@ class MobileCategoryNavigationCest
 {
 
     /**
-     * @param \Page\CategoryNavigation $category
+     * @param \Page\CategoryNavigation $categoryNavigation
      * @param Acceptance\ProductsSteps $I
      * T930_Use category navigation to find the 10 top selling products
+     * @internal param \Page\CategoryNavigation $category
      */
 
     function T1359UseCategoryNavigationToNavigateToTheVariousSaleDepartments(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\ProductsSteps $I)
