@@ -7,10 +7,12 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T1359UseCategoryNavigationToNavigateToTheVariousSaleDepartments(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\ProductsSteps $I)
+    function T1402TestThePagingTopAndBottom(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\CategorySteps $I)
     {
         $categoryNavigation->home();
-        $categoryNavigation->saleDepartment();
+        $categoryNavigation->lawnTractor();
+        $I->paging();
+
     }
     
 }

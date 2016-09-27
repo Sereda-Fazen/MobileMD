@@ -79,7 +79,7 @@ class CategorySteps extends \AcceptanceTester
         $n = substr($name, 0, 1);
         $n2 = substr($name2,0, 1);
         $this->assertGreaterOrEquals($n,$n2);
-        $I->expect('Bottom sort by Name - '.$n.'less'.$n2.'');
+        $I->expect('Bottom sort by Name - '.$n.' less '.$n2.'');
 
 
        $I->selectOption('//div[@class="sort-by"]//select', 'Price');

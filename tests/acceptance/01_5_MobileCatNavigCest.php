@@ -18,9 +18,9 @@ class MobileCategoryNavigationCest
     function T1359UseCategoryNavigationToNavigateToTheVariousSaleDepartments(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\ProductsSteps $I)
     {
         $categoryNavigation->home();
-        //$categoryNavigation->saleDepartment();
+        $categoryNavigation->saleDepartment();
     }
-/*
+
     function T1400TestTheShowNumberDropdownTopAndBottom(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\CategorySteps $I) {
         $categoryNavigation->home();
         $categoryNavigation->lawnTractor();
@@ -34,6 +34,7 @@ class MobileCategoryNavigationCest
         $I->sortBy();
 
     }
+
     function T1402TestThePagingTopAndBottom(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\CategorySteps $I)
     {
         $categoryNavigation->home();
@@ -41,7 +42,7 @@ class MobileCategoryNavigationCest
         $I->paging();
 
     }
-*/
+
 
     
     

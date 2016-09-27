@@ -11,12 +11,14 @@ modules:
             url: 'http://www.mowdirect.co.uk/'
 
             restart: false
-            browser: browser
-            #window_size: 360x640
+            #browser: browser
+            browser: chrome
+            window_size: 360x640
+            #window_size: 768x1024
             #clear_cookies: false
 # --run in browserstack--
-            host: 'hub.browserstack.com'
-            port: 80
+            #host: 'hub.browserstack.com'
+            #port: 80
 # -- login in browserstack
             capabilities:
              browserstack.user: 'alex4556'
@@ -28,7 +30,7 @@ modules:
 
 env:
 
-  # for mobile testing
+  # for android mobile testing
 
   samsung_galaxy_S5:
       modules:
@@ -66,6 +68,40 @@ env:
                  browserstack.debug: 'true'
                  unexpectedAlertBehaviour: 'accept'
                  pageLoadStrategy: 'eager'
+
+  # for ios mobile testing
+
+  iPhone_6S:
+        modules:
+          config:
+             WebDriver:
+                browser: iPhone
+                capabilities:
+                 platform: 'MAC'
+                 device: 'iPhone 6S Plus'
+                 browserstack.debug: 'true'
+                 unexpectedAlertBehaviour: 'accept'
+                 pageLoadStrategy: 'eager'
+
+
+  # for iPad tablet
+
+  iPad_Air_2:
+        modules:
+          config:
+            WebDriver:
+              browser: iPhone
+              host: 'hub.browserstack.com'
+              port: 80
+              capabilities:
+               browserstack.user: 'alex4556'
+               browserstack.key: 'w1447cpT1SQuyFthNZr3'
+               browserstack.debug: 'true'
+               unexpectedAlertBehaviour: 'accept'
+               platform: MAC
+               device: iPad 2 (5.0)
+
+
 
 
 

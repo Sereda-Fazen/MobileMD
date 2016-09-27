@@ -7,7 +7,7 @@ class CategoryNavigation
 
     // T1400
 
-    public static $lawnTractor = '//a[@href="/lawn-garden-tractors"]';
+    public static $lawnTractor = '//*[@id="menu-content"]/div//a/span[text()="Lawn Tractors"]';
     public static $waitTractorsPanel = '//div[@class="category-collateral lawn-garden-tractors"]';
 
     // T1359
@@ -31,6 +31,7 @@ class CategoryNavigation
     {
         $I = $this->tester;
         $I->amOnPage('/');
+        $I->waitAndClick(self::$menu);
     }
 
     public function lawnTractor(){
@@ -41,12 +42,9 @@ class CategoryNavigation
 
     public function saleDepartment(){
         $I = $this->tester;
-        $I->waitAndClick(self::$menu);
         $I->waitAndClick(self::$deals);
         $I->waitAndClick(self::$shopNow);
-       // $I->waitForElement(self::$bestDeals);
-      //  $I->waitForText('The Best Deals Around');
-       // $I->click(self::$bestDeals);
+
         $I->see('Top Deals from MowDirect!', 'h1');
         $I->seeInCurrentUrl('/sale-begins-now/top-deals-from-mowdirect');
         $I->moveBack();
