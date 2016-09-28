@@ -99,9 +99,16 @@ public function screen()
         $wait = $this->getModule('WebDriver');
         $wait->waitForElement($locator);
         $wait->click($locator);
-
-
     }
+
+    public function cutFloatNumber($string) {
+        if ($string) {
+            return floatval(preg_replace('/[^0-9.]*/', '', $string));
+        }
+    }
+
+
+
 
 
 

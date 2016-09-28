@@ -14,10 +14,6 @@ class CategorySteps extends \AcceptanceTester
         $I = $this;
         $I->click('//div[@class="category-collateral lawn-garden-tractors"]/div[' . rand(1, 2) . ']/div/a');
         $I->waitForElement('//*[@title="See our Full Range"]');
-        $test = $I->grabAttributeFrom('//*[@class="mdgo-widget mdgo-our-full-range curved shadow clearfix"]', 'See our Full Range');
-        if ($test > 1) {
-            $I->click('.curved.shadow.shop-now');
-        }
         $I->click('//*[@class="mdgo-widget mdgo-our-full-range curved shadow clearfix"]/a/img');
     }
 
@@ -91,8 +87,8 @@ class CategorySteps extends \AcceptanceTester
        $I->see('Price', 'div.sort-by');
        $price = $I->grabTextFrom('//*[@class="products-list"]/li[1]//span[@class="price"]');
        $price2 = $I->grabTextFrom('//*[@class="products-list"]/li[2]//span[@class="price"]');
-       $pr = floatval(preg_replace("/[^0-9.]*/", '', $price));
-       $pr2 = floatval(preg_replace("/[^0-9.]*/", '', $price2));
+       $pr = $this->cutFloatNumber($price);
+       $pr2 = $this->cutFloatNumber($price2);
        $this->assertGreaterOrEquals($pr, $pr2);
        $I->expect('Bottom sort by Price - '.$pr.' less '.$pr2.'');
 
@@ -130,6 +126,7 @@ class CategorySteps extends \AcceptanceTester
         $I->waitForElement('//div[@class="pages"]');
         $pagingTop = count($I->grabMultiple('(//div[@class="pages"])[1]//li'));
         $I->waitForElementNotVisible('.previous.i-previous');
+
         if ($pagingTop > 1) {
             $I->seeElement('.next.i-next');
             if ($pagingTop > 3) {

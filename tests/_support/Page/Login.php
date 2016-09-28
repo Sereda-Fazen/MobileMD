@@ -14,7 +14,8 @@ class Login
     public static $pass = '#pass';
     public static $submit = '[name="send"] > span > span';
 
-    public static $logout = '//div[@class="fright"]/ul/li[3]/a[2]';
+    public static $account = '//a[@href="#header-account"]';
+    public static $logout = '//a[@href="#header-account"]';
 
     public static $msg = 'div.col-main > p';
 
@@ -54,7 +55,8 @@ class Login
     public function logout()
     {
         $I = $this->tester;
-        $I->click(self::$logout);
+        $I->waitAndClick(self::$account);
+        $I->waitForElement(self::$logout)
         $I->see('You have logged out and will be redirected to our homepage in 5 seconds.',self::$msg);
 
     }

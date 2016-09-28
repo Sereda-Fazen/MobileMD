@@ -1,6 +1,6 @@
 <?php
 namespace Page;
-
+use \Codeception\Util\Locator;
 
 class CategoryNavigation
 {
@@ -32,6 +32,7 @@ class CategoryNavigation
         $I = $this->tester;
         $I->amOnPage('/');
         $I->waitAndClick(self::$menu);
+        //$I->waitAndClick(Locator::combine('nav.product-navigation > ul > li:nth-of-type(2) > a','//a[@href="/lawn-garden-tractors"]'));
     }
 
     public function lawnTractor(){
