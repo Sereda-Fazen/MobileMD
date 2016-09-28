@@ -7,10 +7,11 @@ use \Step\Acceptance;
 class TestCest
 {
 
-    function T1359UseCategoryNavigationToNavigateToTheVariousSaleDepartments(Page\CategoryNavigation $categoryNavigation, \Step\Acceptance\ProductsSteps $I)
-    {
-        $categoryNavigation->home();
-        $categoryNavigation->saleDepartment();
+    function loginSuccess(AcceptanceTester $I, \Page\Login $loginPage) {
+        $loginPage->loginAccount();
+        $loginPage->loginInvalid('mowdirect@gmail.com', '123456');
+        $I->see('From your My Account Dashboard you have the ability to view','div.welcome-msg');
+        $loginPage->logout();
     }
     
 }
